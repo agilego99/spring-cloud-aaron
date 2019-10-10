@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:rdb="http://www.dangdang.com/schema/ddframe/rdb"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.dangdang.com/schema/ddframe/rdb
+                        http://www.dangdang.com/schema/ddframe/rdb/rdb.xsd
+                        ">
+   <!-- inline表達式報錯 -->
+   <context:property-placeholder  ignore-unresolvable="true"/>
+                      
+    <!-- 主數據 -->
+    <bean id="ds_2" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" primary="true">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://gordianknot:3306/ds_2?characterEncoding=utf-8&amp;useSSL=false" />
+        <property name="username" value="root" />
+        <property name="password" value="999999" />
+    </bean>
+   
+    <!-- algorithm-class="com.aaron.sharding.UserSingleKeyTableShardingAlgorithm" -->
+     <!-- user_0,user_1,user_2,user_3 -->
+    <rdb:strategy id="userTableStrategy" sharding-columns="id" algorithm-expression="user_${id.longValue() % 4}"/>
+    <rdb:data-source id="dataSource">
+        <rdb:sharding-rule data-sources="ds_2">
+            <rdb:table-rules>
+                <rdb:table-rule logic-table="user" actual-tables="user_${0..3}" table-strategy="userTableStrategy"/>
+            </rdb:table-rules>
+            <rdb:default-database-strategy sharding-columns="none" algorithm-class="com.dangdang.ddframe.rdb.sharding.api.strategy.database.NoneDatabaseShardingAlgorithm"/>
+        </rdb:sharding-rule>
+    </rdb:data-source>
+   
+   
+    <!-- 增強版JdbcTemplate -->
+    <bean id="gordianknotTemplate" class="org.gordianknot.jdbc.GordianknotTemplate">
+    	<property name="dataSource" ref="dataSource"/>
+    	<constructor-arg>
+    		<value>com.aaron.sharding.po</value>
+    	</constructor-arg>
+    </bean>
+   
+</beans>

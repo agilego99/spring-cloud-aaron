@@ -1,0 +1,105 @@
+server:
+  port: 2001
+spring:
+  redis:
+    host: 192.168.0.210
+    port: 6379
+  application:
+    name: aaronn-spring-cloud-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            exposedHeaders:
+            - content-type
+            allowedHeaders:
+            - content-type
+            allowCredentials: true
+            allowedMethods:
+            - GET
+            - OPTIONS
+            - PUT
+            - DELETE
+            - POST
+      discovery:
+        locator:
+          enabled: true
+          # http://網關地址/服務名稱（小寫）/**
+          lowerCaseServiceId: true
+      routes:
+      - id: customer_route
+        uri: http://agilego99.blogspot.com
+        predicates:
+        - name: CheckAuth
+          args:
+            name: aaron
+      # Path 路由斷言工廠；如果請求路徑為 /agilego99/Aaron-Cloud/tree/master/xxx，則此路由匹配
+      - id: host_route
+        uri: https://github.com
+        predicates:
+        - Path=/agilego99/Aaron-Cloud/tree/master/{segment}
+        filters:
+         # 自定義過濾器因繼承 AbstractNameValueGatewayFilterFactory，可不用自己定義配置累，直接繼承使用即可
+         - CheckAuth=aaron,男
+         # 自定義過濾器因繼承  AbstractGatewayFilterFactory，需要定義一個 NameValueConfig
+         - name: CheckAuth2
+           args:
+             name: ar Ray's 物聯技術解戈迪安繩結
+      # Query 路由斷言工廠
+      - id: query_route
+        uri: https://agilego99.blogspot.com
+        predicates:
+        # 請求參數包含 foo 屬性必且參數值是以 ba 開頭長度為三位的字串才會進行匹配路由  
+        - Query=foo, ba.
+      # Header 路由斷言工廠 
+      - id: header_route
+        uri: http://example.org
+        predicates:
+        # 如果請求中帶有請求頭名 X-Request-Id，其值與 \d+ 正規表達式匹配（值為一個或多個數字），則此路由匹配
+        - Header=X-Request-Id, \d+
+      # 路由轉發
+      - id: path_route
+        uri: https://github.com
+        predicates:
+        - Path=/agilego99
+      # 路由轉發：支援多階層
+      - id: path_route2
+        uri: https://github.com
+        predicates:
+        - Path=/agilego99/**
+      - id: zuul-encrypt-service
+        uri: lb://zuul-encrypt-service
+        predicates:
+        - Path=/data/**
+        filters:
+        - name: Retry
+          args:
+            retries: 3
+            # 狀態碼配置（分段），符合某段狀態馬才會進行重試邏輯，默認值是 SERVER_ERROR，值是 5。
+            series: SERVER_ERROR
+      # 整合 Eureka 路由
+      - id: aaron-eureka-client-user-service
+        uri: lb://aaron-eureka-client-user-service
+        predicates:
+        - Path=/aaron-eureka-client-user-service/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+            key-resolver: "#{@ipKeyResolver}"
+        - name: Hystrix
+          args:
+            # 發生熔斷拾回退的 URI 地址，目前只支持 forward 模式的 URI。如果服務被降級，該請求會被轉發到該 URI 中。
+            name: fallbackcmd
+            fallbackUri: forward:/fallback
+     
+            
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://aaron:999999@localhost:8761/eureka/

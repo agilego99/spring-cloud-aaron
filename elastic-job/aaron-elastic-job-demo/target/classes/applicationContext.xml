@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:reg="http://www.dangdang.com/schema/ddframe/reg"
+    xmlns:job="http://www.dangdang.com/schema/ddframe/job"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.dangdang.com/schema/ddframe/reg
+                        http://www.dangdang.com/schema/ddframe/reg/reg.xsd
+                        http://www.dangdang.com/schema/ddframe/job
+                        http://www.dangdang.com/schema/ddframe/job/job.xsd
+                        ">
+               
+      <!-- Zookeeper 配置作業註冊中心 -->
+      <reg:zookeeper id="regCenter" server-lists="gordianknot:2181" namespace="gordianknot-job"
+       base-sleep-time-milliseconds="1000" max-sleep-time-milliseconds="3000" max-retries="3" />
+    	
+       <bean id="elasticJobLog" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://gordianknot:3306/batch_log?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="999999"/>
+      </bean>    	
+    	
+       <!-- Simple Job-->
+    	<job:simple id="mySimpleJob-appContext" class="com.aaron.job.MySimpleJob" registry-center-ref="regCenter"
+    	cron="10 10 * * * ?" sharding-total-count="1" sharding-item-parameters=""
+    	description="我的第一個簡單作業" overwrite="true"/>
+    	
+        <!-- 
+        資料流服務 啟動程序後，該配置在每天固定時間執行，任務執行1次就結束了 可以通過 streaming-process="true" 來開啟流式作業 
+		對於流式處理資料，只有在 fetchData 方法的返回值為 null 或集合長度為空時，作業才會停止抓取，否則將會一直運行下去 而非流式作業則只會在每次作業執行過程中執行一次 
+		fetchData 方法和 processData 方法，隨即完成本次作業。 
+	    -->
+	    <job:dataflow id="myDataflowJob-appContext"
+		class="com.aaron.job.MyDataflowJob" registry-center-ref="regCenter" sharding-total-count="1" 
+		cron="0 44 12 * * ?" sharding-item-parameters="" description="我的第一個數據流作業" 
+		streaming-process="true" overwrite="true"/>
+		<!-- streaming-process="false" overwrite="true"/> -->
+		
+		
+        <!-- Script Job -->	
+        <job:script id="myScriptJob-appContext" registry-center-ref="regCenter"
+    	script-command-line="/Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/elastic-job/aaron-elastic-job-demo/demo.sh"
+    	sharding-total-count="1" 
+    	cron="0 50 12 * * ?" sharding-item-parameters="" description="我的第一個腳本任務" overwrite="true"/>
+        
+       <!-- Simple Job：分片數 2 -->
+       <job:simple id="mySimpleJobSharding-appContext" class="com.aaron.job.MySimpleShardingJob" registry-center-ref="regCenter"
+    	cron="0 53 12 * * ?" sharding-total-count="2" sharding-item-parameters="0=0,1=1"
+    	description="我的第一個簡單作業" overwrite="true"/> 
+    	
+       <!-- 
+           Simple Job：Sharding
+           結合：
+           事件追蹤任務 elasticJobLog
+           自定義監聽器 MessageElasticJobListener
+           自定義異常處理 CustomJobExceptionHandler
+       -->
+       <job:simple id="mySimpleJobEvent-appContext" class="com.aaron.job.MySimpleShardingJob" registry-center-ref="regCenter"
+    	cron="0 3 13 * * ?" sharding-total-count="1" sharding-item-parameters="0=0,1=1"
+    	description="我的第一個簡單作業" overwrite="true" event-trace-rdb-data-source="elasticJobLog"
+    	job-exception-handler="com.aaron.job.CustomJobExceptionHandler">
+    	<job:listener class="com.aaron.job.MessageElasticJobListener"></job:listener>
+    	</job:simple>
+<!--        <job:simple id="mySimpleJobEvent-appContext" class="com.aaron.job.MySimpleShardingJob" registry-center-ref="regCenter"
+    	cron="0 3 13 * * ?" sharding-total-count="1" sharding-item-parameters="0=台北,1=新北"
+    	description="我的第一個簡單作業" overwrite="true" event-trace-rdb-data-source="elasticJobLog"
+    	job-exception-handler="com.aaron.job.CustomJobExceptionHandler">
+    	<job:listener class="com.aaron.job.MessageElasticJobListener"></job:listener>
+    	</job:simple> -->
+    	
+</beans>

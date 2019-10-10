@@ -1,0 +1,17 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "org.gordianknot.swagger.SwaggerListProperties",
+      "name": "swagger.ui",
+      "type": "org.gordianknot.swagger.SwaggerListProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "org.gordianknot.swagger.SwaggerListProperties",
+      "name": "swagger.ui.confs",
+      "type": "java.util.List<org.gordianknot.swagger.SwaggerProperties>"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+2019-08-21 15:35:51.110  INFO [-,,,] 9217 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4659191b: startup date [Wed Aug 21 15:35:51 CST 2019]; root of context hierarchy
+2019-08-21 15:35:51.222  INFO [-,,,] 9217 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-08-21 15:35:51.240  INFO [-,,,] 9217 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$16fce621] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-21 15:35:51.331  INFO [-,,,] 9217 --- [           main] com.aaron.eureka_client.App              : No active profile set, falling back to default profiles: default
+2019-08-21 15:35:51.339  INFO [-,,,] 9217 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@331acdad: startup date [Wed Aug 21 15:35:51 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4659191b
+2019-08-21 15:35:51.805  INFO [-,,,] 9217 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=538b121f-9ff5-39f4-a531-1051198a17fd
+2019-08-21 15:35:51.817  INFO [-,,,] 9217 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-08-21 15:35:51.841  INFO [-,,,] 9217 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$c14ea152] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-21 15:35:51.991  INFO [-,,,] 9217 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$16fce621] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-21 15:35:52.290  INFO [-,,,] 9217 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2019-08-21 15:35:52.303  INFO [-,,,] 9217 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-21 15:35:52.304  INFO [-,,,] 9217 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-08-21 15:35:52.306  INFO [-,,,] 9217 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/Kevin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-08-21 15:35:52.366  INFO [-,,,] 9217 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-21 15:35:52.367  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1028 ms
+2019-08-21 15:35:52.665  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-21 15:35:52.666  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'tracingFilter' to: [/*]
+2019-08-21 15:35:52.666  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'exceptionLoggingFilter' to: [/*]
+2019-08-21 15:35:52.667  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-08-21 15:35:52.667  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-08-21 15:35:52.667  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-08-21 15:35:52.667  INFO [-,,,] 9217 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-08-21 15:35:52.714  WARN [-,,,] 9217 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-08-21 15:35:52.715  INFO [-,,,] 9217 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-08-21 15:35:52.717  WARN [-,,,] 9217 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-08-21 15:35:52.718  INFO [-,,,] 9217 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-08-21 15:35:52.795  INFO [-,,,] 9217 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-08-21 15:35:52.975  INFO [-,,,] 9217 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@331acdad: startup date [Wed Aug 21 15:35:51 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4659191b
+2019-08-21 15:35:53.025  INFO [-,,,] 9217 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/hello],methods=[GET]}" onto public java.lang.String com.aaron.eureka_client.controller.UserController.hello()
+2019-08-21 15:35:53.029  INFO [-,,,] 9217 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-21 15:35:53.029  INFO [-,,,] 9217 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-21 15:35:53.069  INFO [-,,,] 9217 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-08-21 15:35:53.070  INFO [-,,,] 9217 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-08-21 15:35:53.664  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-08-21 15:35:53.672  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'rabbitConnectionFactory' has been autodetected for JMX exposure
+2019-08-21 15:35:53.673  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2019-08-21 15:35:53.674  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2019-08-21 15:35:53.675  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2019-08-21 15:35:53.678  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2019-08-21 15:35:53.688  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2019-08-21 15:35:53.696  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=331acdad,type=ConfigurationPropertiesRebinder]
+2019-08-21 15:35:53.701  INFO [-,,,] 9217 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'rabbitConnectionFactory': registering with JMX server as MBean [org.springframework.amqp.rabbit.connection:name=rabbitConnectionFactory,type=CachingConnectionFactory]
+2019-08-21 15:35:53.714  INFO [-,,,] 9217 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2019-08-21 15:35:53.727  INFO [-,,,] 9217 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-08-21 15:35:53.754  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-08-21 15:35:53.852  INFO [-,,,] 9217 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-08-21 15:35:53.852  INFO [-,,,] 9217 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-08-21 15:35:53.944  INFO [-,,,] 9217 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-08-21 15:35:53.944  INFO [-,,,] 9217 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-08-21 15:35:54.051  INFO [-,,,] 9217 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 15:35:54.062  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-08-21 15:35:54.063  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-08-21 15:35:54.236  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-08-21 15:35:54.239  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-08-21 15:35:54.241  INFO [-,,,] 9217 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-08-21 15:35:54.244  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1566372954243 with initial instances count: 2
+2019-08-21 15:35:54.253  INFO [-,,,] 9217 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application AARON-SLEUTH-USER-SERVICE with eureka with status UP
+2019-08-21 15:35:54.253  INFO [-,,,] 9217 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1566372954253, current=UP, previous=STARTING]
+2019-08-21 15:35:54.254  INFO [-,,,] 9217 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 15:35:54.257  INFO [-,,,] 9217 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-08-21 15:35:54.280  INFO [-,,,] 9217 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
+2019-08-21 15:35:54.300  INFO [-,,,] 9217 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path ''
+2019-08-21 15:35:54.301  INFO [-,,,] 9217 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2019-08-21 15:35:54.304  INFO [-,,,] 9217 --- [           main] com.aaron.eureka_client.App              : Started App in 3.599 seconds (JVM running for 3.969)
+2019-08-21 15:38:08.714  INFO [-,,,] 9217 --- [nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-08-21 15:38:08.714  INFO [-,,,] 9217 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-21 15:38:08.733  INFO [-,,,] 9217 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2019-08-21 15:38:08.751  INFO [-,d0a54a57bb4fbd3b,898dfe46da6efa02,true] 9217 --- [nio-8083-exec-1] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 15:40:54.068  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 15:40:54.915  INFO [-,a1df6c65fc276305,868489b523304adb,true] 9217 --- [nio-8083-exec-3] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 15:45:44.260  INFO [-,494143ba830b9624,23e1e22eec7e5127,true] 9217 --- [nio-8083-exec-5] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 15:45:54.079  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 15:50:54.087  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 15:55:54.094  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 15:57:26.952  INFO [-,39b92bd509a4d950,44a58ff54315b7f3,true] 9217 --- [nio-8083-exec-7] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 15:59:17.900  INFO [-,51694084860641a0,3eb064b473dcc5d8,true] 9217 --- [nio-8083-exec-9] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 16:00:54.099  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:01:17.097  INFO [-,e5908386a7fa155a,9fbca2d14d22e108,true] 9217 --- [nio-8083-exec-1] c.a.e.controller.UserController          : 我是/user/hello
+2019-08-21 16:05:54.101  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:10:54.107  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:15:54.112  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:20:54.116  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:25:54.117  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:30:54.121  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:35:54.126  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:40:54.131  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:45:54.136  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:50:54.139  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 16:55:54.142  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:00:54.154  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:05:54.157  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:10:54.164  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:15:54.168  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:20:54.172  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:25:54.176  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:30:54.186  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:35:54.191  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:40:54.198  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:45:54.206  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:50:54.216  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 17:53:36.907 ERROR [-,,,] 9217 --- [168.56.101:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:164)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:596)
+	at java.lang.Thread.run(Thread.java:745)
+
+2019-08-21 19:00:03.291  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - Re-registering apps/AARON-SLEUTH-USER-SERVICE
+2019-08-21 19:00:03.298  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 19:00:03.316  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
+2019-08-21 19:01:01.245  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 19:42:02.654  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - Re-registering apps/AARON-SLEUTH-USER-SERVICE
+2019-08-21 19:42:02.660  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 19:42:02.671  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
+2019-08-21 20:16:06.867  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - Re-registering apps/AARON-SLEUTH-USER-SERVICE
+2019-08-21 20:16:06.867  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 20:16:06.890  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
+2019-08-21 20:16:34.671  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 21:01:20.302  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - Re-registering apps/AARON-SLEUTH-USER-SERVICE
+2019-08-21 21:01:20.303  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 21:01:20.314  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
+2019-08-21 21:38:45.028  INFO [-,,,] 9217 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-08-21 21:38:47.419  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - Re-registering apps/AARON-SLEUTH-USER-SERVICE
+2019-08-21 21:38:47.420  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083: registering service...
+2019-08-21 21:38:47.431  INFO [-,,,] 9217 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AARON-SLEUTH-USER-SERVICE/aaron-sleuth-user-service:172.20.10.3:8083 - registration status: 204
