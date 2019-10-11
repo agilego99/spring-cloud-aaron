@@ -1,3 +1,4 @@
+2019/10/11 
 # Zookeeper：分散式協調服務
 ##### Zookeeper是開源分散式協調服務，一種集中式服務架構，用於維護分散式系統的配置資訊，命名，提供分散式同步和組服務功能。 所有這些型別的服務都以分散式應用程式的某種形式使用。
 - 功能包括：配置維護、域名服務、分布式同步、組服務。
@@ -45,7 +46,7 @@ $ tar -xzf zookeeper-3.4.13.tar.gz -C ../project/
 ##### 圖形化的客戶端工具 ZooInspector
 ```
 $ wget https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip
-# 解壓縮至 /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/server/Zookeeper/ZooInspector
+# 解壓縮至 /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/server/Zookeeper/ZooInspector
 ```
 
 ### 配置 zookeeper
@@ -72,13 +73,10 @@ dataDir=/home/aaron/gordianknot/project/zookeeper-data
 #### 啟動圖形化的客戶端工具 ZooInspector
 ###### 本軟體有 bug 必需切至 jar 檔所在目錄才可正常執行
 ```
-$ cd /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/server/Zookeeper/ZooInspector/build
+$ cd /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/server/Zookeeper/ZooInspector/build
 $ java -jar zookeeper-dev-ZooInspector.jar
 ```
-
-
-
-![7b487051b35981e0ee5a3689a088de6e](imgs/0B6152E9-543F-4E66-98AA-DE4029BE9B11.png)
+![7b487051b35981e0ee5a3689a088de6e](imgs/9070C679-F94C-4417-B6BE-68E48147E584.png)
 
 ### 維運
 ```
@@ -89,8 +87,8 @@ $ netstat -apn | grep 2181
 $ echo stat | nc localhost 2181
 
 ```
-![52e8b607205fb00a7b4ec4fe5746fd5e](imgs/07A1230A-2803-4928-86CA-97741445460A.png)
-![68ca5ec72578578e5b869afae8c4a605](imgs/4B86C914-8634-42DC-BCB1-E870A3FEA964.png)
+![52e8b607205fb00a7b4ec4fe5746fd5e](imgs/BAE37AAC-D48C-4458-912A-FEE383647086.png)
+![68ca5ec72578578e5b869afae8c4a605](imgs/6B5BD322-50B5-48AA-978A-D2889A5F3479.png)
 
 ### 操作
 - 連接 zookeeper

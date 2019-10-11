@@ -36,7 +36,7 @@ public class GridFsController {
  	*/
  	@GetMapping("/image/upload")
  	public String uploadFile() throws Exception {
- 		File file = new File("/Users/Kevin/Downloads/logo.png");
+ 		File file = new File("/Users/aaron/Downloads/logo.png");
  		InputStream content = new FileInputStream(file);
  		// 存儲文件的額外信息，比如用戶ID,後面要查詢某個用戶的所有文件時就可以直接查詢
  		DBObject metadata = new BasicDBObject("userId", "1001");

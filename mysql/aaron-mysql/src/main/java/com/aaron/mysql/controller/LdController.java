@@ -20,7 +20,7 @@ public class LdController {
 	
 	@GetMapping("/test1")
 	public String test1() {
-		ldService.generatePo("com.aaron.mysql.po","aaron", "/Users/Kevin/Downloads/aaron-mysql");
+		ldService.generatePo("com.aaron.mysql.po","aaron", "/Users/aaron/Downloads/aaron-mysql");
 		return "success";
 	}
 }

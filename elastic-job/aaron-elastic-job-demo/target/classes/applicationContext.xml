@@ -44,7 +44,7 @@
 		
         <!-- Script Job -->	
         <job:script id="myScriptJob-appContext" registry-center-ref="regCenter"
-    	script-command-line="/Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/elastic-job/aaron-elastic-job-demo/demo.sh"
+    	script-command-line="/Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/elastic-job/aaron-elastic-job-demo/demo.sh"
     	sharding-total-count="1" 
     	cron="0 50 12 * * ?" sharding-item-parameters="" description="我的第一個腳本任務" overwrite="true"/>
         

@@ -1,5 +1,5 @@
 # Elastic-Job
-![20b9bc267fcd59301ecb7d13617cb5a5](imgs/9741D8CD-F58C-479C-B713-5C48187DAB3C.png)
+![20b9bc267fcd59301ecb7d13617cb5a5](imgs/EBA035F2-26AC-458B-BE5C-C2FB43D54CD4.png)
 
 ##### Elastic-Job 介紹
 ###### Elastic-Job 是一個分布式調度解決方案，由兩個相互獨立的子項目Elastic-Job-Lite 和 Elastic-Job-Cloud 組成。
@@ -37,7 +37,7 @@
 - 基於Docker的進程隔離(TBD)
 
 ##### Elastic-Job 官方配置手册
-###### [Elastic-Job Java Code配置](http://elasticjob.io/docs/elastic-job-lite/02-guide/config-manual/)
+######  [Elastic-Job Java Code配置](http://elasticjob.io/docs/elastic-job-lite/02-guide/config-manual/)
 
 
 ## 參數
@@ -205,7 +205,7 @@ echo Sharding Context: $*
 ```
         <!-- Script Job -->	
         <job:script id="myScriptJob-appContext" registry-center-ref="regCenter"
-    	script-command-line="/Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/elastic-job/aaron-elastic-job-demo/demo.sh"
+    	script-command-line="/Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/elastic-job/aaron-elastic-job-demo/demo.sh"
     	sharding-total-count="1" 
     	cron="0 46 12 * * ?" sharding-item-parameters="" description="我的第一個腳本任務" overwrite="true"/>
 ```
@@ -370,48 +370,48 @@ public class CustomJobExceptionHandler implements JobExceptionHandler {
 ##### Simple Job
 ###### 執行 JobApplication
 ###### 每 10 秒執行 Job 一次
-![5c2108263d62cb032df08b73876789b4](imgs/5665FB34-802B-43B5-9FD6-DEFF81C94FC9.png)
+![5c2108263d62cb032df08b73876789b4](imgs/C3B1FE07-AAD4-4BFD-A826-6F227817165E.png)
 ###### ZK 節點註冊資訊
-![41deb2470977987f178500eb40cc24d4](imgs/DB5652DD-AA10-438C-A997-DA6B3B9D73B3.png)
+![41deb2470977987f178500eb40cc24d4](imgs/C38D5BCE-66D8-402F-BB4B-B33529C872D1.png)
 
 ##### Dataflow Job
 ###### 執行 JobApplication
 ###### 資料流任務-停用流式作業（streaming-process="false" ；在排程條件符合下，只執行一次）
-![9956b3a5f7c001c5b948a783778ff50b](imgs/2DDDF853-CE6A-40E1-9245-91F777DE7D7D.png)
+![9956b3a5f7c001c5b948a783778ff50b](imgs/EB558632-3F49-4DB6-9BF9-ED1C0E72372E.png)
 ###### ZK 節點註冊資訊
-![a6d2b17aca363a5cd6d3b1a4ec48ab8e](imgs/B0FB0767-61BC-4EA4-BC63-E9602BDD645C.png)
+![a6d2b17aca363a5cd6d3b1a4ec48ab8e](imgs/139AC5F6-2DEB-4887-BEE9-D31B17537548.png)
 ###### 資料流任務-啟用流式作業（streaming-process="ture" ；在排程條件符合下，只要有資料就會一直執行）
-![34f60b4e8f42a2703349624b349ef72a](imgs/A5553F8E-5F13-4024-BF92-B2704177BE28.png)
+![34f60b4e8f42a2703349624b349ef72a](imgs/D51889DB-C2BE-436B-9224-68F3F98055F1.png)
 ###### ZK 節點註冊資訊
-![3701e4b101b8da0c32b75ef5a1911b08](imgs/28549D37-F887-4016-8A49-F1C0049B62EA.png)
+![3701e4b101b8da0c32b75ef5a1911b08](imgs/F8D1F7C3-3AA2-4C93-BC87-E1DEE175EB6C.png)
 
 ##### Script Job
 ###### 執行 JobApplication
 ###### 執行前先確認是否有執行權限，以避免執行失敗
-![f0ff2ac899b59d2a2360a4671bd4a0f8](imgs/18254D0A-82F2-4C28-95DA-6AC0D7C3F5F0.png)
+![f0ff2ac899b59d2a2360a4671bd4a0f8](imgs/28B6A748-3AE6-47EB-B846-0B07D8D5A9A7.png)
 ###### ZK 節點註冊資訊
-![562f8977db9b17058f8f376ce588f9b7](imgs/67033E6A-08D0-41F0-A329-131E49C5A8CF.png)
+![562f8977db9b17058f8f376ce588f9b7](imgs/69AA7551-810B-4090-A917-B8C2AAF12A9F.png)
 
 
 ##### 業務資料分片處理（共2個分片）
 ###### 執行第一個 JobApplication 
-![1434221e669bada4ed22f8d6d5cea478](imgs/7FB011FD-C3E8-43BE-AF16-9B3F505BEA91.png)
+![1434221e669bada4ed22f8d6d5cea478](imgs/3C79DA83-2D96-4F26-885C-665C24CEA7C9.png)
 ###### 執行第二個 JobApplication 
-![ee1d640a2eff3292a2cd33e722a23e17](imgs/E87E1708-35E3-4BC1-B14A-6443AC335CDC.png)
+![ee1d640a2eff3292a2cd33e722a23e17](imgs/A2316762-1D59-4B4A-A97B-DA7A0F94C686.png)
 ###### ZK 節點註冊資訊
-![0859a49c22bdcf71ae3df49bfc5a9ba2](imgs/39E955F1-2ADC-4A8B-B540-DBD11C63EADD.png)
+![0859a49c22bdcf71ae3df49bfc5a9ba2](imgs/54984CC4-FF05-4F40-BF91-FEEAF3FC4AC4.png)
 ###### ZK 節點註冊分片資訊
-![6f7653ca3f9856ec1b414984b153823d](imgs/A3E70B26-D268-46A7-BD19-998831F9D1BF.png)
+![6f7653ca3f9856ec1b414984b153823d](imgs/5AE00B7B-1AE8-4096-A2B1-7B404C20A080.png)
 
 ##### 事件追蹤
 ###### 執行 JobApplication
-![aa8607f6271610bc7fedc8e360d7c917](imgs/968B54CD-3998-45F9-9ACD-C08CDA367628.png)
+![aa8607f6271610bc7fedc8e360d7c917](imgs/872C6C8C-50C9-4552-AA3D-57EDA770E124.png)
 ###### 資訊寫入資料庫 Table
-![d6c07e6b2f0259a604543d7b16f7f5b9](imgs/B46FCD72-4129-49F3-8657-6112A6EA4D95.png)
-![ca245c9b2f6e55ee7d2e16af349ce9ae](imgs/A3E06923-E50D-42E8-BB13-7B13BD869129.png)
-![5b6b4de4d090c9abd738489583eeff14](imgs/C165AF92-C5EC-4DF9-8FCA-8840CD49C7F5.png)
+![d6c07e6b2f0259a604543d7b16f7f5b9](imgs/B9EAC95E-D0F2-447D-B370-816065F6166A.png)
+![ca245c9b2f6e55ee7d2e16af349ce9ae](imgs/1140FF59-E0DD-42C1-BBB2-C5D29714CE05.png)
+![5b6b4de4d090c9abd738489583eeff14](imgs/B451D85E-556B-491C-8623-9E48F87F770E.png)
 ###### ZK 節點註冊資訊
-![766597af4467d5972517d550719c63f9](imgs/DC147126-9C77-4188-9AD7-F48DC49CDF12.png)
+![766597af4467d5972517d550719c63f9](imgs/AF8DA0B1-27D2-4338-90E7-A8F7022C7C90.png)
 
 ##### 發布作業（尚未驗證）
 ###### 打包作業
@@ -431,14 +431,14 @@ root
 999999
 ```
 ###### 註冊中心列表
-![78bff43cfdd3b87bb81bc0333ab05628](imgs/9F531030-5895-4E28-A484-A3E997EB56B8.png)
+![78bff43cfdd3b87bb81bc0333ab05628](imgs/C1CC3EFC-751E-422A-A7A9-18A913FBD6FC.png)
 ###### 作業維度：可對任務的配置資料進行修改
-![708d411207eaa782cc3e7960cdbabf5a](imgs/85672F3F-166F-4B97-B8E8-93CE28C2DC1E.png)
-![882fcc00bf725c8f8c42ff6e1e25062d](imgs/28BCDFDB-B9DF-497A-9AF8-31F3953F807C.png)
+![708d411207eaa782cc3e7960cdbabf5a](imgs/0393FA29-7702-4C31-9371-6E487F00B3EB.png)
+![882fcc00bf725c8f8c42ff6e1e25062d](imgs/23243000-CEF6-4D86-B55D-F442D2BCBB35.png)
 ###### 事件追蹤：歷史軌跡
-![d5ae64cb9072ac4d4f638c124a2d724c](imgs/6D1A65AA-C9EA-45E1-BD58-CC7764EDE328.png)
+![d5ae64cb9072ac4d4f638c124a2d724c](imgs/D91AA83D-A6F2-4697-9471-39DA8D236EA6.png)
 ###### 事件追蹤：歷史狀態
-![ec94634a5c436a5d61eea9633ee1dad6](imgs/AF852347-2A63-46AA-A4DE-BEB01DF8F391.png)
+![ec94634a5c436a5d61eea9633ee1dad6](imgs/593B9F3C-BAA5-416A-9CF9-1023DB83A8C7.png)
 
 ### 維運
 

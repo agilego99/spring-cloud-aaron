@@ -831,7 +831,7 @@ public class GordianknotTemplate extends JdbcTemplate {
  	* 獲取Table的Comment放在類上面，默認是獲取不到的，需要數據庫連接加上useInformationSchema=true才可以
  	* @param pack	PO類的包名（com.aaron.mysql.po）
  	* @param author PO類的創建者（aaron）
- 	* @param savePath 保存的路徑（E:\\PO）或 (/Users/Kevin/Downloads/aaron-mysql)
+ 	* @param savePath 保存的路徑（E:\\PO）或 (/Users/aaron/Downloads/aaron-mysql)
  	*/
  	public void generatePoClass(String pack, String author, String savePath) {
  		try {
