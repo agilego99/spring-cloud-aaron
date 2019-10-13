@@ -72,7 +72,8 @@ management.endpoints.web.exposure.include=*
 ###### 在 Admin 中查看服務日誌
 ```
 # 供 Admin 中查看服務日誌
-logging.file=/Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/logs/Downloads/aaron-spring-boot-admin-client.log
+logging.file=/Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/logs/Downloads/aaron-spring-boot-admin-client.log
+
 ```
 
 ### 配置
@@ -96,20 +97,20 @@ spring.boot.admin.client.password=999999
 # 開啟 Browser http://localhost:9091
 ```
 註冊服務資訊
-![3d5a975f7b65877b039f8d7151eacb15](imgs/4ECA8E63-3595-4FBD-937A-A6C34B6C6584.png)
+![3d5a975f7b65877b039f8d7151eacb15](imgs/380FC7AC-7EB6-448C-B577-6BB140D42996.png)
 ###### 暴露出資料端點
 ```
 # 啟動 aaron-spring-boot-admin 及 aaron-spring-boot-admin-client
 # 開啟 Browser http://localhost:9091
 ```
-![887aa9ff2749eac02f6eb4fe8be53cb7](imgs/44A7C638-54C0-42CA-AA93-7D61F59A1421.png)
-![95d42019e4c0eb9f8bd2fff3e94b67a5](imgs/F51E6125-D467-4140-A261-BCB78475D2CD.png)
+![887aa9ff2749eac02f6eb4fe8be53cb7](imgs/C4A22A1D-9358-4996-B7DB-17D5CDC97641.png)
+![95d42019e4c0eb9f8bd2fff3e94b67a5](imgs/B03B3307-ACB8-475E-9F03-E9DF07ABFF7D.png)
 ###### 在 Admin 中查看服務日誌
 ```
 # 啟動 aaron-spring-boot-admin 及 aaron-spring-boot-admin-client
 # 開啟 Browser http://localhost:9091
 ```
-![63ae1b7349fd11728bc1faca32776762](imgs/05BFE5A7-4950-4916-865E-B5CFD24FA087.png)
+![63ae1b7349fd11728bc1faca32776762](imgs/28332578-25A2-4001-A89E-87ED0F44D895.png)
 
 ###### 開啟認證
 ```
@@ -118,7 +119,7 @@ spring.boot.admin.client.password=999999
 # 帳號 aaron
 # 密碼 999999
 ```
-![ee300b61ac8f5b0fd176f094648e67f2](imgs/76FFFBA2-7C37-4019-85FF-BE82701E52E3.png)
+![ee300b61ac8f5b0fd176f094648e67f2](imgs/10D4FD36-8C7F-401C-A53C-A1A52442DB24.png)
 
 ### 維運
 
@@ -321,7 +322,7 @@ server.port=9091
 ```
 ### 測試
 ###### 監控服務之二：第三方平台（釘釘機器人發送消息；使用前須先取得 Token）
-![76719176fd7a46661c6dcb5569b6ab42](imgs/7B5CE0EF-7E92-44D8-A687-837EA7D00449.png)
+![76719176fd7a46661c6dcb5569b6ab42](imgs/E9DCF7FD-4426-4D6B-8DAD-6A636B92FCB1.png)
 
 ### 維運
 
@@ -334,7 +335,7 @@ server.port=9091
 # aaron-spring-boot-admin-client
 # 停止 aaron-spring-boot-admin-client
 ```
-![ae918b26a4d8fd0056b9ff01ac8ec132](imgs/97E3944F-109B-4EA2-B13A-6FA8472B7AFC.png)
+![ae918b26a4d8fd0056b9ff01ac8ec132](imgs/CDE6E1B0-DD4C-40EB-9330-29340310E11F.png)
 
 ### 開發
 
@@ -443,15 +444,15 @@ spring.application.name=aaron-spring-boot-admin-eureka
 # 密碼 999999
 ```
 Eureka Server 畫面
-![4fd88005666cb9a769719bd38c4ff3e5](imgs/D6E788E1-D0BF-4404-9C92-158608A654F3.png)
+![4fd88005666cb9a769719bd38c4ff3e5](imgs/34FF10E3-CE4B-4BD5-BC9F-5B172294C42B.png)
 Spring Boot Admin Server 登入畫面
-![703a69fddb490d8948aa1148b8eeb417](imgs/19293790-7157-431D-A8DA-545B20CB9EDD.png)
+![703a69fddb490d8948aa1148b8eeb417](imgs/B61E5A88-13F8-49EB-BD2E-0C4D35742115.png)
 監控實例（包含自身）
-![f9ccb8ef411394a6c8597a9dc6e14ceb](imgs/74643D7B-2D1E-4D80-8182-50F0EBC83552.png)
+![f9ccb8ef411394a6c8597a9dc6e14ceb](imgs/884BAC5B-9437-41F1-9E86-7FFF7A2C233E.png)
 aron-spring-boot-admin-eureka 監控畫面
-![5844141d687198d0d503b835e03d620b](imgs/D02337DE-F546-47D1-ADFE-939D004389B7.png)
+![5844141d687198d0d503b835e03d620b](imgs/6330BC85-FE21-4755-B0A7-B3F7874B18EE.png)
 aron-spring-boot-admin-client 監控畫面
-![92e701baf63844f48a217c2ec8220f60](imgs/0F7A8590-BD79-4D99-92A2-C8181868258E.png)
+![92e701baf63844f48a217c2ec8220f60](imgs/24999269-7C66-4F7A-AEA0-44F03D66999F.png)
 
 ###### 監控服務之一：郵件報警
 ```
@@ -463,7 +464,7 @@ aron-spring-boot-admin-client 監控畫面
 # 開啟郵件軟體
 ```
 Spring Boot Admin Server 報警狀態
-![3b865f05912dff130de9d8931579833b](imgs/2ECB9071-C60B-4A78-9D54-D6788AEDA652.png)
+![3b865f05912dff130de9d8931579833b](imgs/A4DB0BFD-0D9B-4AFF-8C9C-83F7D21A0D29.png)
 報警郵件
 ![a0d681aaa6fab33df9542139076677b7](imgs/EB396FBF-1B52-45E2-AEA2-8519D2E95106.png)
 

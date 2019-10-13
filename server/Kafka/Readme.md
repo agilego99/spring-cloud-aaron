@@ -8,6 +8,7 @@
         - Zookeeper
             - [安裝 Zookeeper](../server/Zookeeper)
         - Java
+- Kafka Tool 2.0.4 
 
 ## 開始
 
@@ -119,7 +120,7 @@ $ bin/kafka-topics.sh --list --zookeeper 192.168.56.101:2181
 # 刪除 Topic
 bin/kafka-topics.sh --delete --zookeeper 192.168.56.101:2181 --topic test
 ```
-![68fa5ee21e1e691b845b545145e9bb8b](imgs/C0FBDDC8-F1B8-4C25-AFFE-9C659E7F02F2.png)
+![68fa5ee21e1e691b845b545145e9bb8b](imgs/41294280-DFB6-45C4-8F8A-4BAFA5B1C531.png)
 
 - 操作 message
 ```
@@ -128,16 +129,16 @@ $ bin/kafka-console-producer.sh --broker-list 192.168.56.101:9092 --topic test
 # 消費消息，創建消息消費者
 $ bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.101:9092 --topic test --from-beginning
 ```
-![4150d2d6a31a09b5cf723b5186cb3396](imgs/7EA8E21F-45D1-443B-B1E4-27E76321B726.png)
+![4150d2d6a31a09b5cf723b5186cb3396](imgs/EEA500AE-A692-4AF9-81F3-767ACC79E83F.png)
 
 - 以 Kafka tool 工具建立連線
-![5b50af566e05bb29a7fe09c0b21f0dea](imgs/33BBEFD1-81DD-48A9-BAAE-663620465777.png)
+![5b50af566e05bb29a7fe09c0b21f0dea](imgs/1E0AEB43-F45F-4535-9EC8-D0D2681DEAD2.png)
 
 
 ### SSL 驗證 
 #### 使用 Linux 內建的 openssl 驗證配置的 ssl 有效（出現以下內容即表示成功）
 `openssl s_client -debug -connect gordianknot:9095 -tls1`
-![c634d940cba4f957b8dc86c717de4a5e](imgs/1603F03A-8832-4237-98B8-78DFB3E2DE64.png)
+![c634d940cba4f957b8dc86c717de4a5e](imgs/D5D9FE83-7156-4F10-8596-010F53870994.png)
 
 - 操作 message
 ```
@@ -147,11 +148,10 @@ $ bin/kafka-console-producer.sh --broker-list gordianknot:9095 --topic test --pr
 # 消費消息，創建消息消費者
 $ bin/kafka-console-consumer.sh --bootstrap-server gordianknot:9095 --topic test --from-beginning --consumer.config config/c-ssl.properties 
 ```
-![b3fc8a32f831b94b842f0ad28a0daca5](imgs/2054603C-579A-404E-A64C-94C1095F6E99.png)
+![b3fc8a32f831b94b842f0ad28a0daca5](imgs/6285C723-BD59-463F-8FE5-33BA8AC1F44C.png)
 
 - 以 Kafka tool 工具建立連線
-![cab9da9ec1bf987fd98187672a3062fc](imgs/53A58C13-4109-4E4C-9232-8B6DB24ACE5D.png)
-
+![b173e50a401647c42710381415371a06](imgs/96837E1E-C32C-4ABC-95E0-111B03255767.png)
 
 ## 維運
 ```
@@ -172,5 +172,5 @@ $ bin/kafka-server-stop.sh
 $ netstat -apn | grep 9092
 $ netstat -apn | grep 9095
 ```
-![4df6651fbd7a657a0749c4f27c3c14c4](imgs/8C5C71FC-CCB1-4900-8752-21AD7D445321.png)
+![4df6651fbd7a657a0749c4f27c3c14c4](imgs/133C9FD6-1240-43F0-8CE5-1A7F4082AE59.png)
 
