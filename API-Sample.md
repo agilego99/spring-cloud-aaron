@@ -123,7 +123,7 @@ ECK_WiWis_API_specification
         - [13.7. POST /users/{user-id}/consultation_board_members](#137-post-usersuser-idconsultation_board_members)
         - [13.8. POST /consultations/{consultation-id}/consultation_dialogs](#138-post-consultationsconsultation-idconsultation_dialogs)
         - [13.9. GET /users/{user-id}/consultations/consult](#139-get-usersuser-idconsultationsconsult)
-        - [13.10. POST /wounds/{chart-wound-id}/consultations/consultation-window](#140-post-woundschart-wound-idconsultationsconsultation-window)
+        - [13.10. POST /wounds/{chart-wound-id}/consultations/consultation-window13.10. POST /wounds/{chart-wound-id}/consultations/consultation-window](#1310-post-woundschart-wound-idconsultationsconsultation-window)
     - [14. content-service](#14-content-service)
         - [14.1. GET /content-service/upload-url/wound-image](#141-get-content-serviceupload-urlwound-image)
         - [14.2. PUT {url of 14.1's result}](#142-put-url-of-141s-result)
