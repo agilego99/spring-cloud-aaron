@@ -1,0 +1,28 @@
+{
+     "type": "record",
+     "namespace": "com.wistron.witlab.model",
+     "name": "Taxidata",
+     "fields": [
+       { "name": "medallion", "type": "string"},
+       { "name": "hack_license", "type": "string"},
+       { "name": "vendor_id", "type": "string"},
+       { "name": "payment_type", "type": "string"},
+       { "name": "fare_amount", "type": "float"},
+       { "name": "surcharge", "type": "float"},
+       { "name": "mta_tax", "type": "float"},
+       { "name": "tip_amount", "type": "float"},
+       { "name": "tolls_amount", "type": "float"},
+       { "name": "total_amount", "type": "float"},
+       { "name": "rate_code", "type": "int"},
+       { "name": "pickup_datetime", "type": "long", "logicalType": "timestamp-millis" },
+       { "name": "dropoff_datetime", "type": "long", "logicalType": "timestamp-millis"},
+       { "name": "passenger_count", "type": "int"},
+       { "name": "trip_time_in_secs", "type": "int"},
+       { "name": "trip_distance", "type": "float"},
+       { "name": "pickup_longitude", "type": "float"},
+       { "name": "pickup_latitude", "type": "float"},
+       { "name": "dropoff_longitude", "type": "float"},
+       { "name": "dropoff_latitude", "type": "float"},
+       { "name": "credit_card", "type": ["null","string"], "default": null}
+     ]
+}

@@ -1,0 +1,12 @@
+{
+     "type": "record",
+     "namespace": "com.wistron.witlab.model",
+     "name": "Employee",
+     "fields": [
+       { "name": "id", "type": "string"},
+       { "name": "name", "type": "string", "default": ""},
+       { "name": "age", "type": "int", "default": 0},
+       { "name": "phone", "type": "string", "default":"0000-0000"},
+       { "name": "address", "type": "string", "default":""}
+     ]
+}
