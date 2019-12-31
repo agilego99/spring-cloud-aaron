@@ -1,5 +1,4 @@
-2019/12/31 
-# ELK：
+# ELK(Docker)：
 ##### Elastic static 架構
 ![e485a33f30de7a55064de41349b0747e](imgs/43811B7F-6CBD-4514-AE8A-B623FA4D43FC.png)
 
@@ -9,7 +8,6 @@
 - Kibana 7.4.2
 - Logstash 7.4.2
 - Filebeat 7.4.2
-
 
 ### 安裝
 
@@ -40,7 +38,10 @@ $ docker network inspect elastic_stack
 ```
 
 #### ELK：設定內容
-##### 設定 Filebeat 讀取的Log路徑
+##### 建立工作目錄：讀取的Log路徑
+```
+$ mkdir -p $(pwd)/elk/filebeat
+```
 ##### 建立 filebeat/filebeat.yml
 ```
 $ nano $(pwd)/elk/filebeat/filebeat.yml
