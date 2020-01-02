@@ -1,14 +1,17 @@
 package com.aaron.eureka_server.utils;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author Aaron
  */
-public class LogUtil {
+public class LogStashUtil {
 	
+	public static final String LOGSTASH_NAME1 = "logstash_name1";
+	public static final String LOGSTASH_NAME2 = "logstash_name2";
 	
-	 LogUtil() {}
 
-	public static String concat(String... ss) {
+	public  static String concat(String... ss) {
 		
 		StringBuilder sb = new StringBuilder();
 		

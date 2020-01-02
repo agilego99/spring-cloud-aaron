@@ -1,4 +1,4 @@
-# ELK：透過 ELK 收集日誌
+# Sprintn Boot@ELK
 
 ## 參數
 - CentOS 7.5
@@ -36,61 +36,38 @@
 ```
 - logback.xml logstash 相關配置
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="false">
-    <property resource="application.properties"></property>
-    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="${logging.levelfile}" />
-    <property name="LOG_LEVEL" value="${logging.all.level}" />
-    <!-- 格式化輸出：%date表示日期，%thread表示線程名，%-5level：級別從左顯示5個字符寬度 %msg：日誌消息，%n是換行符-->    
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"/>  
-    <!-- 定義日誌存儲的路徑，不要配置相對路徑 -->  
-    <property name="FILE_PATH" value=" logs/app-%d{yyyy-MM-dd}_%i.log"/>
-    
-    
-  <!-- 控制台輸出日誌 -->  
-  <appender name="console" class="ch.qos.logback.core.ConsoleAppender"> 
-    <encoder> 
-      <!-- 按照上面配置的LOG_PATTERN來打印日誌 -->  
-      <pattern>${LOG_PATTERN}</pattern> 
-    </encoder> 
-  </appender>  
-    
-   <!--每天生成一個日誌文件，保存30天的日誌文件。rollingFile是用來切分文件的 -->  
-  <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
-      <fileNamePattern>${FILE_PATH}.zip</fileNamePattern>
-      <!-- keep 30 days' worth of history -->  
-      <maxHistory>30</maxHistory>  
-      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> 
-        <!-- 日誌文件的最大大小 -->  
-        <maxFileSize>50MB</maxFileSize> 
-      </timeBasedFileNamingAndTriggeringPolicy> 
-    </rollingPolicy>  
-    <encoder> 
-      <pattern>${LOG_PATTERN}</pattern> 
-    </encoder> 
-  </appender>  
-    
-    
+    ..............    
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>${logstash.ip_port}</destination>
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
+         <encoder charset="UTF-8"
+                 class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "appname": "${spring.application.name}",
+                        "level": "%level",
+                        "class": "%logger{40}",
+                        "message": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
         <queueSize>1048576</queueSize>
         <keepAliveDuration>5 minutes</keepAliveDuration>
     </appender>
 
-    <logger name="elk_logger" level="INFO" additivity="false">
+    <logger name="logstash_name1" level="INFO" additivity="false">
         <appender-ref ref="logstash"/>
     </logger>
-
-    <!-- 日志输出级别 -->
-    <root level="${LOG_LEVEL}">
-        <appender-ref ref="console" />
-        <appender-ref ref="rollingFile" />
-        <!--<appender-ref ref="logstash" />-->
-    </root>
-</configuration>
+    <logger name="logstash_name2" level="INFO" additivity="false">
+        <appender-ref ref="logstash"/>
+    </logger>
+    ..............
 ```
 - EurekaStateChangeListener 使用 elk 日誌物件
 ```
@@ -98,38 +75,28 @@
 @Slf4j
 public class EurekaStateChangeListener {
 	
-    // elk_logger 定義只須上傳的 log 
-	Logger elkLogger = LoggerFactory.getLogger("elk_logger");
+	Logger elkLogger1 = LoggerFactory.getLogger(LogStashUtil.LOGSTASH_NAME1);
+	Logger elkLogger2 = LoggerFactory.getLogger(LogStashUtil.LOGSTASH_NAME2);
 	
+	 @EventListener
+    public void listen(EurekaRegistryAvailableEvent event) {
+        System.err.println("註冊中心 啓動");
+        // 使用方式
+        logstashName1.info(LogStashUtil.concat("elk 測試","進行註冊"));
+        logstashName2.info(LogStashUtil.concat("elk 測試","進行註冊"));
+
+    }
     ..............
 }
 ```
-- LogUtil.java 字串格式化
+- LogUtil.java 定義欲收集的日誌種類
 ```
-public class LogUtil {
+public class LogStashUtil {
 	
-	
-	 LogUtil() {}
-
-	public static String concat(String... ss) {
-		
-		StringBuilder sb = new StringBuilder();
-		
-		for (String s : ss) {
-			sb.append(str(s) + " ");
-		}
-		return sb.toString();
-	}
-	
-	public static String str(Object o) {
-		return (o == null) ? "" : String.valueOf(o).trim();
-	}
-
-	public static String str(String s) {
-		if (s == null)
-			return "";
-		return s.trim();
-	}
+	public static final String LOGSTASH_NAME1 = "logstash_name1";
+	public static final String LOGSTASH_NAME2 = "logstash_name2";
+	.......
+    
 
 }
 ```

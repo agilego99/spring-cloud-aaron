@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <property resource="application.properties"></property>
-    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="${logging.levelfile}" />
-    <property name="LOG_LEVEL" value="${logging.all.level}" />
+    <property name="LOG_LEVEL" value="${logging_level_root}" />
     <!-- 格式化輸出：%date表示日期，%thread表示線程名，%-5level：級別從左顯示5個字符寬度 %msg：日誌消息，%n是換行符-->    
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"/>  
     <!-- 定義日誌存儲的路徑，不要配置相對路徑 -->  
@@ -37,12 +35,32 @@
     
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>${logstash.ip_port}</destination>
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
+         <encoder charset="UTF-8"
+                 class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "appname": "${spring.application.name}",
+                        "level": "%level",
+                        "class": "%logger{40}",
+                        "message": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
         <queueSize>1048576</queueSize>
         <keepAliveDuration>5 minutes</keepAliveDuration>
     </appender>
 
-    <logger name="elk_logger" level="INFO" additivity="false">
+    <logger name="logstash_name1" level="INFO" additivity="false">
+        <appender-ref ref="logstash"/>
+    </logger>
+    <logger name="logstash_name2" level="INFO" additivity="false">
         <appender-ref ref="logstash"/>
     </logger>
 
