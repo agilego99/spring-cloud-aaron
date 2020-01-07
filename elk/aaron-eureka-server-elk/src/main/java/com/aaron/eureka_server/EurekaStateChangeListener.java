@@ -37,8 +37,8 @@ public class EurekaStateChangeListener {
     @EventListener
     public void listen(EurekaRegistryAvailableEvent event) {
         System.err.println("註冊中心 啓動");
-    	elkLogger1.info(LogStashUtil.concat("elk 測試","進行註冊"));
-        elkLogger2.info(LogStashUtil.concat("elk 測試","進行註冊"));
+        logstashName1.info(LogStashUtil.concat("elk 測試","進行註冊"));
+        logstashName2.info(LogStashUtil.concat("elk 測試","進行註冊"));
 
     }
     @EventListener
