@@ -68,7 +68,7 @@ $ lsof -i:8090 for
 ```
 #### 啟動
 ```
-$ cd /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/server/applo-buile-scripts-1.4.0
+$ cd /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/server/Apollo/applo-buile-scripts-1.4.0
 $  ./demo.sh start
 # 管理頁面 http://localhost:8070
 ```

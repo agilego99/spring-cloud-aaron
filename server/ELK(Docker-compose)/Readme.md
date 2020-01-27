@@ -1,7 +1,9 @@
 # ELK(docker-compose)
 
 ### 參數
-- CentOS 7.5
+- 下列環境擇一
+    - CentOS 7.5 
+    - Ubunntu 18.04
 - Elasticsearch 6.5.4
 - Kibana 7.5.0
 - Logstash 7.5.0
@@ -15,7 +17,9 @@
 $ sudo docker-compose --version
 # 如果出現 "docker-compose version ..." 既表示安裝過，若無，請執行以下安裝指令
 # 安裝
-$ sudo yum install docker-compose
+
+$ sudo yum install docker-compose (Centos)
+$ sudo apt-get install git-all (Ubuntu)
 ```
 
 #### 安裝 git
@@ -24,7 +28,8 @@ $ sudo yum install docker-compose
 $ sudo git --versio
 # 如果出現 "git version ..." 既表示安裝過;若無，請執行以下安裝指令
 # 安裝
-$ sudo yum install git-all
+$ sudo yum install git-all (Centos)
+$ sudo apt-get install git-all (Ubuntu)
 ```
 
 #### 安裝 nano
@@ -32,7 +37,8 @@ $ sudo yum install git-all
 # 測試安裝
 # 如果出現 ”GNU nano version ..." 既表示安裝過;若無，請執行以下安裝指令
 # 安裝
-$ sudo yum -y install nano
+$ sudo yum -y install nano (Centos)
+$ sudo apt-get install nano (Ubuntu)
 
 ```
 #### 建立工作目錄
@@ -111,7 +117,7 @@ $ docker-compose restart
 ```
 
 
-#### 防火牆開通 8089、8088 port（需要 Port mapping 在執行）
+#### 防火牆開通 8089、8088 port（Centos 需要 Port mapping 在執行）
 ```bash=
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 8089 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 8088 -j ACCEPT
@@ -122,7 +128,7 @@ $ sudo firewall-cmd --zone=public --add-port=8088/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
 
-#### 配合指定 Port：修改 docker-compose.yml（restart: always、port：8088:5000、port：8088:5000）
+#### 配合指定 Port：修改 docker-compose.yml（Centos restart: always、port：8088:5000、port：8088:5000）
 ```bash=
 $ cd ~
 $ nano $(pwd)/elk/docker-elk/docker-compose.yml

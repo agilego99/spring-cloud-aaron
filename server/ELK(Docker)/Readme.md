@@ -2,12 +2,11 @@
 ##### Elastic static 架構
 ![e485a33f30de7a55064de41349b0747e](imgs/43811B7F-6CBD-4514-AE8A-B623FA4D43FC.png)
 
-### 參數
+### 參數imgs
 - CentOS 7.5
 - Elasticsearch 7.4.2
 - Kibana 7.4.2
 - Logstash 7.4.2
-- Filebeat 7.4.2
 
 ### 安裝
 
@@ -19,136 +18,187 @@ $ docker pull docker.elastic.co/elasticsearch/elasticsearch:7.4.2
 ```
 $ docker pull docker.elastic.co/kibana/kibana:7.4.2
 ```
-#### Filebeat：docker pull
-```
-$ docker pull docker.elastic.co/beats/filebeat:7.4.2
-```
 #### Logstash：docker pull
 ```
 $ docker pull docker.elastic.co/logstash/logstash:7.4.2
 ```
 
+### 建立工作目錄
+#### 主機1（Elasticsearch）
+
+##### data 目錄
+```bash=
+$ mkdir -p $(pwd)/elasticsearch/data
+$ mkdir -p $(pwd)/elasticsearch/config
+
+$ chmod 777 $(pwd)/elasticsearch/data
+$ chmod 777 $(pwd)/elasticsearch/config
+```
+
+#### 主機2（Logstash、Kibana）
+##### data 目錄
+```bash=
+# Logstash
+$ mkdir -p $(pwd)/logstash/data
+$ chmod 777 $(pwd)/logstash/data
+
+# Kibana
+$ mkdir -p $(pwd)/kibana/data
+$ chmod 777 $(pwd)/kibana/data
+```
+
 ### 配置（前置工作）
 
-#### 建立虛擬網路
-```
-$ docker network create elastic_stack
-# 查詢私有網路配置情況
-$ docker network inspect elastic_stack
-```
+#### Elasticsearch：設定內容
+##### 建立 elasticsearch.yml 
+```bash=
+$ nano $(pwd)/elasticsearch/config/elasticsearch.yml
+# 複製以下內容
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
 
-#### ELK：設定內容
-##### 建立工作目錄：讀取的Log路徑
-```
-$ mkdir -p $(pwd)/elk/filebeat
-```
-##### 建立 filebeat/filebeat.yml
-```
-$ nano $(pwd)/elk/filebeat/filebeat.yml
-# 內容如下：
-filebeat.config:
-  modules:
-    path: ${path.config}/modules.d/*.yml
-    reload.enabled: false
-
-filebeat.inputs:
-  - type: log
-    paths:
-      - /var/log/elk-sample.log
-
-output.logstash:
-  hosts: ["logstash:5044"]
+\wq
+# 修改檔案權限
+$ chmod 777 $(pwd)/elasticsearch/config/elasticsearch.yml
 ```
 
 #### Logstash：設定內容
-##### 建立工作目錄
-```
-$ mkdir -p $(pwd)/elk/logstash/pipline
-```
-##### 設定 Logstash 的 Input/Filter/Output
-##### 建立 logstash.conf
-```
-$ nano $(pwd)/elk/logstash/pipline/logstash.conf
-# 內容如下：
-input {
-  beats {
-    port => 5044
-  }
+##### 建立 logstash.conf（將 192.168.56.107 修改為實際 IP）
+```bash=
+$ mkdir -p $(pwd)/logstash
+$ nano $(pwd)/logstash/logstash.conf
+# 複製以下內容：
+input{
+      	tcp {
+             	mode => "server"
+                port => 5000
+                codec => json_lines
+                tags => ["java-springboot"]
+        }
 }
-
-filter {
-  grok {
-    match => {
-      "message" => "%{GREEDYDATA:result}"
+filter{
+    json{
+	source => "message"
+        remove_field => ["message"]
     }
-  }
-  json {
-    source => "result"
-  }
-  mutate {
-    remove_tag => ["_jsonparsefailure"]
-  }
+}
+output{
+    if "java-springboot" in [tags]{
+        elasticsearch{
+                hosts=> ["192.168.56.107:9200"] 
+                index => "java-springboot-%{+YYYY.MM.dd}"
+                }
+        stdout{codec => rubydebug}
+    }
 }
 
-output {
-  elasticsearch {
-    hosts => "elasticsearch:9200"
-    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
-  }
-}
+\wq
+$ chmod 777 $(pwd)/logstash/logstash.conf
+```
+##### 建立 logstash.yml（將 192.168.56.107 修改為實際 IP）
+```bash=
+$ nano $(pwd)/logstash/config/logstash.yml
+# 複製以下內容
+http.host: "0.0.0.0"
+xpack.monitoring.elasticsearch.hosts: [ "http://192.168.56.107:9200" ]
+
+\wq
+
+$ chmod 777 $(pwd)/logstash/config/logstash.yml
+```
+
+#### Kibana：設定內容
+##### 建立 kibana.yml（將 192.168.56.107 修改為實際 IP）
+```bash=
+$ mkdir -p $(pwd)/kibana/config
+$ nano $(pwd)/kibana/config/kibana.yml
+# 複製以下內容
+#
+## ** THIS IS AN AUTO-GENERATED FILE **
+##
+#
+## Default Kibana configuration for docker target
+server.name: kibana
+server.host: "0"
+elasticsearch.hosts: [ "http://192.168.56.107:9200" ]
+xpack.monitoring.ui.container.elasticsearch.enabled: true
+
+\wq
+$ chmod 777 $(pwd)/kibana/config/kibana.yml
 ```
 
 
 ### 維運
 
+#### 防火牆開通 9200、8089、8088 port（Centos 需要 Port mapping 在執行）
+```bash=
+
+# 主機一：Elasticsearch
+$ sudo iptables -A INPUT -p tcp -m tcp --dport 9200 -j ACCEPT
+$ sudo firewall-cmd --zone=public --add-port=9200/tcp --permanent
+$ sudo firewall-cmd --reload
+
+# 主機二：Logstash、Kibana
+$ sudo iptables -A INPUT -p tcp -m tcp --dport 8089 -j ACCEPT
+$ sudo iptables -A INPUT -p tcp -m tcp --dport 8088 -j ACCEPT
+
+$ sudo firewall-cmd --zone=public --add-port=8089/tcp --permanent
+$ sudo firewall-cmd --zone=public --add-port=8088/tcp --permanent
+
+$ sudo firewall-cmd --reload
+```
+
 #### Elasticsearch：docker run
+```bash=
+# Volume 要放在 run 後面，否則會 Exit(2) 錯誤
+$ docker run -v $(pwd)/elasticsearch/data:/usr/share/elasticsearch/data \
+-v $(pwd)/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+-d --name elasticsearch -p 9200:9200 -p 9300:9300 \
+-e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.4.2
 ```
-$ docker run -d --name elasticsearch --net elastic_stack -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.4.2
-```
+
 ##### 測試是否成功運行
+```bash=
+$ curl -X GET "ip:9200"
+$ http://ip:9200
+# 查詢 log
+$ docker logs -f elasticsearch 
 ```
-$ curl -X GET "localhost:9200"
+![edf92a5130042e456cd812012af7c529](imgs/C22BCB4C-3310-4857-8338-52FCE61E0488.png)
+
+#### Logstash：docker run
+```bash=
+$ docker run -d -p 8088:5000 --name logstash \
+-v $(pwd)/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf \
+-v $(pwd)/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml \
+-v $(pwd)/logstash/data/:/usr/share/logstash/data/ \
+docker.elastic.co/logstash/logstash:7.4.2
 ```
-![b23ed2720cb13d5db490cbfda52f2f8f](imgs/8B724474-962E-4D37-A957-9CD5FF9BA95B.png)
+
+##### 測試是否成功運行
+```bash=
+$ docker logs -f logstash
+# 出現 “Successfully started Logstash API endpoint” 內容
+[2020-01-13T09:54:57,081][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
+```
+![641d4d5afd8715e46d5ef5320d430f0b](imgs/2E1CC966-2FB6-4049-80F7-93BD514C074F.png)
 
 #### Kibana：docker run
-```
-$ docker run -d --name kibana --net elastic_stack -p 5601:5601 docker.elastic.co/kibana/kibana:7.4.2
+```bash=
+$ docker run -d --name kibana -p 8089:5601 \
+-v $(pwd)/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml \
+-v $(pwd)/kibana/data/:/usr/share/kibana/data/ \
+docker.elastic.co/kibana/kibana:7.4.2
+
 ```
 ##### 測試是否成功運行
-`http://ip:5601`
-
-#### Filebeat：docker run
-##### 在 Kibbana 建立 index pattern 及一些基本的圖型
+```bash=
+$ http://ip:8089
+$ curl -X GET "ip:8089"
+$ docker logs -f kibana
 ```
-# 將 Filebeat 相關的一些 Index Pattern 及 Visualization 建到 Kibana，之後資料進到 Elasticsearch 的時候就可以直接匯整。
-$ docker run --net=elastic_stack docker.elastic.co/beats/filebeat:7.4.2 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["elasticsearch:9200"]
-```
-###### 執行結果
-![31f381b2a0ed3cea5be88d3d89c0f23a](imgs/09DB1B1C-0CA6-4D1C-9941-0EFDDE90FC73.png)
-
-##### docker run（包含設定 volume mount）
-```
-$ docker run -d --net=elastic_stack --name=filebeat --user=root --volume="$(pwd)/elk/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro" --volume="/var/lib/docker/containers:/var/lib/docker/containers:ro" --volume="/var/run/docker.sock:/var/run/docker.sock:ro" --volume="/var/log:/var/log" docker.elastic.co/beats/filebeat:7.4.2 filebeat -e -strict.perms=false
-```
-
-#### Logstash
-##### docker run（包含設定 volume mount）
-```
-$ docker run -d -p 5044:5044 -p 9600:9600 --name logstash --net elastic_stack -v $(pwd)/elk/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.4.2
-```
-
-
-### 測試
-#### 將測試檔案置放在以下目錄，在至 Kibana 看結果
-```
-＄/var/log/
-```
-
-
 
 ##### docke 指令
-
 ```
 # 顯示 docker network inspect 虛擬網路
 $ docker network inspect elastic_stack [虛擬私有網路名稱]
@@ -172,4 +222,16 @@ $ exit
 
 # 移除這個「tomcat8080」容器
 $ docker rm containner-id
+
+#將所有 Container 殺掉
+$ docker kill $(docker ps -q)
+
+# 將所有 Container 移除
+$ docker rm $(docker ps -a -q)
+
+# 删除所有的镜像
+$ docker rmi $(docker images -q)
+
+# 删除所有的镜像（強制）
+$ docker rmi $(docker images -q) --force
 ```

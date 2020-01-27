@@ -1,7 +1,7 @@
 # Sprintn Boot@ELK
 
 ## 參數
-- CentOS 7.5
+- CentOS 7imgs
 - Spring boot：2.0.6.RELEASE
 - Spring cloud：Finchley.SR2
 - Java：8
@@ -99,6 +99,12 @@ public class LogStashUtil {
     
 
 }
+```
+
+### 配置
+- application.properties
+```java=
+logstash.ip_port=192.168.56.104:5000
 ```
 
 ### 測試

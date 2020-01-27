@@ -4,9 +4,9 @@
 - Zuul 在雲平台上提供動態路由，監控，彈性，安全等邊緣服務的框架。Zuul 相當於是設備和 Netflix 流應用的 Web 網站後端所有請求的前門。
 ###### 功能諸如，管理大量的 API 接口、與客戶端對接、適配協議、安全認證、轉發路由、限制流量、監控日誌、防止爬蟲、進行灰度發布等。
 Zuul 微服務
-![f72047fa6af6abed0e0a110601e1af8c](imgs/1DEAD9C3-99D7-4436-9D88-1560038CD44B.png)
-![9dceec279b8584da1d4c32f7df9f2fd3](imgs/F41C3E88-67C1-4432-B206-E304142F9342.png)
-![2e2f8465124b97af0301d5eb53f14c17](imgs/0773F152-0B4E-49F8-9544-4CD634E2413C.png)
+![f72047fa6af6abed0e0a110601e1af8c](imgs/22F3885D-CC10-4DA7-8779-923C0A13D00A.png)
+![9dceec279b8584da1d4c32f7df9f2fd3](imgs/CCF4AF7F-3A35-4CEB-9271-ABF8A44DA2DD.png)
+![2e2f8465124b97af0301d5eb53f14c17](imgs/EBDEFB9D-C83E-4AC7-A3FA-5F06326122C2.png)
 
 
 - Spring Cloud Zuul 路由是微服務架構的不可或缺的一部分，提供動態路由，監控，彈性，安全等的邊緣服務。Zuul是Netflix 出品的一個基於 JVM 路由和服務端的負載均衡器。Zuul 能夠與 Eureka、Ribbon、Hystrix 等組件合併使用。
@@ -419,13 +419,13 @@ server.port=2103
 
 ### 測試
 ###### 測試路由轉發 `http://localhost:2103/google`
-![aebf688f2cb3298776a550c0c8ee1c21](imgs/6B325047-E7E0-47E9-BA4D-6C7E84B26CFE.png)
+![aebf688f2cb3298776a550c0c8ee1c21](imgs/E10D0BA4-9A8E-4E16-8E49-1A85A02F859A.png)
 ###### 指定具體服務路由 `http://localhost:2103/api-house/user/hello`
-![855b5d1a34e8251329d36b12b8b8a90a](imgs/93A0924D-A711-486C-AAA8-F68A6FA72DE5.png)
+![855b5d1a34e8251329d36b12b8b8a90a](imgs/C75977BA-67C9-482C-9965-6FD33F35A64E.png)
 ###### 指定路由前綴 `http://localhost:2103/rest/api-house/user/hello`
-![c9584952640a47487469709b633212af](imgs/43AF3929-1AF9-414A-9C66-723B9E8BAA3A.png)
+![c9584952640a47487469709b633212af](imgs/D689CCEA-4834-47C3-AD78-6327A41FB620.png)
 ###### 本地跳轉 `http://localhost:2103/rest/api/aaron`
-![849736f17aa02f44c6bcec2d97066cd7](imgs/A3089635-1189-4CF6-A1F6-C602CEB0D209.png)
+![849736f17aa02f44c6bcec2d97066cd7](imgs/3DB9D2DB-824D-47D2-8944-7ADC3D138226.png)
 ###### 測試過濾器異常處理 `http://localhost:2103/rest/api-house/user/hello`
     - IpFilter.java   
 ```
@@ -436,30 +436,29 @@ server.port=2103
         ....
      }        
 ```
-![a166ae0666dccf70f1dceffface0b343](imgs/9AB954ED-1770-42BD-BBF5-B910670C94CB.png)
+![a166ae0666dccf70f1dceffface0b343](imgs/F1E212CD-54B1-4CB9-8CAC-9DA206931A3A.png)
 ###### Zuul 容錯機制 `http://localhost:2103/rest/api-house/user/hello`
 ```
 # 分別啟動兩個 aaron-eureka-client-user-service；port 為 8083、8084
 # 默認 Ribbon 的轉發規則為是輪詢
 ```
-![2752c071ccb9047ffec55e5b3144eb1c](imgs/EBF8BC44-4A01-410D-874E-37916DCE4431.png)
+![2752c071ccb9047ffec55e5b3144eb1c](imgs/B6CDC152-D2D3-4B36-A978-72AD7F0FF54C.png)
 ```
 # 然後停掉其中一個 aaron-eureka-client-user-service 服務
 # 至 application.properties 設置 zuul.retryable=false
 # 重新啟動 aaron-zuul-demo 後，停掉一個 aaron-eureka-client-user-service，然後執行兩次則肯定有一次的調用是被轉發到停掉的服務上去，並且返回錯誤訊息。
 ```
-![2e2f73b795e5a0555e8fc6649165f398](imgs/B376E17C-5B35-4213-B1EC-B65575A7FFF7.png)
+![9ee66f1c12ac2790eae52d5ce63d8421](imgs/0747832C-B673-4084-B4E2-8C13E9DF2645.png)
 ```
-# 設置 zuul.retryable=false 後，重新啟動 aaron-zuul-demo
+# 設置 zuul.retryable=true 後，重新啟動 aaron-zuul-demo
 # 停掉一個 aaron-eureka-client-user-service，然後執行兩次，然這個時候則不會返回異常訊息，因為 Ribbon 會根據重試配置進行重試，當請求不可用時，會將請求重發到可用的服務上去。
 ```
-![9ee66f1c12ac2790eae52d5ce63d8421](imgs/9B75C4C9-CD42-4419-AB4A-D12DE6B67C6A.png)
-
+![2e2f73b795e5a0555e8fc6649165f398](imgs/84E50826-8733-4306-BC75-D12AA4B244AA.png)
 ###### Zuul 回退機制 `http://localhost:2103/rest/api-house/user/hello`
 ```
 # 停止 aaron-eureka-client-user-service 所有服務
 ```
-![1f308090435ae7633842eb5ab3ec7de0](imgs/0A804E93-795E-4E56-ACC3-EF8A10CC7A47.png)
+![1f308090435ae7633842eb5ab3ec7de0](imgs/8A37F428-8A54-4880-8B35-9D425AFBC63D.png)
 
 ###### 啟用路由監控資訊及所有過濾器資訊（需結合 actuator）
 `http://localhost:2103/actuator/routes`
@@ -605,7 +604,7 @@ server.port=2104
 ### 測試
 
 ###### 文件上傳 `http://localhost:2104/file/upload`
-![583f9c859cb309526c93cfa81fcc41de](imgs/5DAE4C46-A9AA-4319-A2CE-491D1F97A8D4.png)
+![583f9c859cb309526c93cfa81fcc41de](imgs/62F10339-71FE-43E7-8A63-6B6B4A04FC97.png)
 
 ### 維運
 - 服務接口 `POST http://localhost:2104/file/upload`

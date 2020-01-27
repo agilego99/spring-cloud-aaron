@@ -1,5 +1,5 @@
 # Eureka：服務監控
-![9d262e926ba0037d21acebc2128f8c8c](imgs/F1105A11-AE37-4C58-A0B5-07F71DA82D11.png)
+![9d262e926ba0037d21acebc2128f8c8c](imgs/22E473A7-DC22-4920-850C-15468BF06AF5.png)
 
 ##### CAP 定理
 - 分布式系統領域有個著名的 CAP 定理（帽子定理）：這三個特性在任何分佈至系統中都不能同時滿足，最多同時滿足兩個。
@@ -48,7 +48,7 @@ server.port=8761
 # 關閉自我保護：eureka.server.enable-self-preservation=true
 # 如果在 Web 控制台看到以下圖示的內容，那就證明進入保護模式了。
 ```
-![a00d84cc1f86d16ba9dd16a610e548c9](imgs/AFAF755F-726C-4B99-82FE-78DA726DC27D.png) 
+![a00d84cc1f86d16ba9dd16a610e548c9](imgs/DF38BDB3-861A-41D9-AC2C-B5AF2107B8C4.png) 
 
 ### 測試
 
@@ -72,7 +72,7 @@ server.port=8083
 ```
 
 ### 測試
-![241cc5202fb4099d477bcae5031ab3b0](imgs/A7B8B888-0423-4D92-AFFF-989FB8D8B3BE.png)
+![241cc5202fb4099d477bcae5031ab3b0](imgs/E1864154-C470-4AC4-BBC6-E8F72A834B21.png)
 
 ### 維運
 - 服務接口
@@ -80,7 +80,7 @@ server.port=8083
 
 
 ## aaron-eureka-client-article-service：服務調用者
-![1e7224e0200286e9ad08b8ef373bd920](imgs/025923CA-9AE6-4B99-9004-042212CCDC8C.png)
+![1e7224e0200286e9ad08b8ef373bd920](imgs/5D884569-A99E-4CAD-9BC1-204CF03E8C32.png)
 
 
 ### 開發
@@ -98,9 +98,9 @@ eureka.instance.metadata-map.gordium=aaron
 ```
 
 ### 測試
-![ce5368606bb5502a356bbe88bedded8e](imgs/E47C9E97-01C2-470B-AB25-691966573778.png)
+![ce5368606bb5502a356bbe88bedded8e](imgs/3D570842-B90A-4790-A84E-264D85221476.png)
 
-![21bcd9affadcdf3e0759719115942892](imgs/3F5E5FDE-3CA1-456D-9A17-E331FCFCBCCC.png)
+![21bcd9affadcdf3e0759719115942892](imgs/413E858F-E61A-499D-A080-2FBD8B43A3FB.png)
 
 
 
@@ -158,9 +158,9 @@ eureka.client.serviceUrl.defaultZone=http://aaron:999999@localhost:8761/eureka/
 
 ### 測試
 `master http://localhost:8761`
-![78a8e145f343d582d7325fe8cc44e135](imgs/F12F96D4-0E6F-46CC-A930-7CDE3D78324D.png)
+![78a8e145f343d582d7325fe8cc44e135](imgs/84DEEEB2-8E28-4F3C-9600-9362930858B6.png)
 `slaveone http://localhost:8762`
-![64dbd6d8f68eb42e8782f7d8ea362be0](imgs/619215B9-73D3-4A52-82AB-CDAB5F313736.png)
+![64dbd6d8f68eb42e8782f7d8ea362be0](imgs/8A7E0EA5-B01A-4056-813B-1A2EC82D5FDC.png)
 
 ### 維運
 - 啟動

@@ -1,8 +1,7 @@
 # Ribbon：基於客戶端的負載均衡組件
 - Ribbon 是 Netflix 開源的一款用於客戶端的負載均衡的工具軟體。
-![277a7cbc2161e3a27c834b506b8f1a6d](imgs/89DE3642-3BCC-4CEB-8B72-B51C71EE0199.png)
-![0ebfa301217e138bcc4e601fd9c64987](imgs/7EFA497E-231C-4276-80B6-7FF3E6CC86B0.png)
-
+![277a7cbc2161e3a27c834b506b8f1a6d](imgs/1329729F-9D78-4937-B72F-BE3CCD7E9B9D.png)
+![b60c88387e303c1acc51dc4cc628d5c6](imgs/DFB8C488-E2E6-41BB-BB48-81E6AF9E674F.png)
 ## 參數
 - Spring boot：2.0.6.RELEASE
 - Spring cloud：Finchley.SR2
@@ -61,10 +60,10 @@ ribbon.eager-load.enabled=true
 ribbon.eager-load.clients=aaron-ribbon-config-demo
 
 ```
-![d307957aa34513250eacab0c297ea2ba](imgs/7D987EA8-DB60-4453-A4DF-0A3713717C78.png)
+![d307957aa34513250eacab0c297ea2ba](imgs/26D6B9B4-AFEE-424A-8293-101BDE3EA8BA.png)
 
 - 執行 RibbonTest
-![288cb60edc468eea3cb42e91566ff8ad](imgs/7F038E1C-E7F0-4AF0-BEB1-FFA4BB0066AE.png)
+![288cb60edc468eea3cb42e91566ff8ad](imgs/CC51B8C9-AAD1-4B92-A4D1-6AB21C03A062.png)
 
 ### 維運
 
@@ -146,7 +145,7 @@ ribbon.eager-load.clients=aaron-ribbon-eureka-demo
 ```
 ### 測試
 - 攔截器作用結果
-![4512e85a2c36dbc639c4b5317d446e57](imgs/5E83EDD0-5D92-445D-B615-DF64C5A0956D.png)
+![4512e85a2c36dbc639c4b5317d446e57](imgs/29933DFD-7A0E-4BF6-8B04-65C66629B0E8.png)
 
 ### 維運
 - 服務接口：HouseController.java
