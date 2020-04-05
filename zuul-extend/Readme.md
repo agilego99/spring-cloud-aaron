@@ -1,7 +1,7 @@
 # Zuul：API Gateway 擴展
 ##### 本篇為 「Zuul 應用進階篇」如對 Zull 尚未有初步了解，可先參考「Zuul 基礎應用」連結請以下路徑： [Zuul 基礎應用](../zuul)
 
-![238c3c7118b61005daf3f5b7ee2829f5](imgs/88D03F32-3B5D-4631-946D-FF2EF685CAE0.png)
+![82797cf5851f503d9718e751f57f888e](imges/5396E16F-0DD3-409A-970A-E23FD0DCB14A.png)
 
 ## 參數
 - Spring boot：2.0.6.RELEASE
@@ -607,48 +607,48 @@ server.port=2103
 ###### 透過 ab 測試單節點接口性能
 `$ ab -n 1000 -c 30 http://localhost:2103/aaron-zuul-extend-user-service/user/login`
 ###### limitRate 參數為 100；共耗時  9.540s
-![94e062380b91e928616bbb3e21e8b8f3](imgs/5070442A-7678-4F1C-A2AE-995D07EF0E9C.png)
+![94e062380b91e928616bbb3e21e8b8f3](imges/EB299EBE-3BB2-4DC7-B46A-B6FE6592C536.png)
 ###### 至 Apollo 配置中心 http://localhost:8070 將 limitRate 參數調整為 10；熱部署配置，參數值動態生效
-![a6dde93a1a06c36b97cc72bb4114d9b4](imgs/AEB4BE9A-7B1B-4651-9ACB-9227C38FFD8F.png)
-![a6dde93a1a06c36b97cc72bb4114d9b4](imgs/AEB4BE9A-7B1B-4651-9ACB-9227C38FFD8F.png)
+![a6dde93a1a06c36b97cc72bb4114d9b4](imges/067474C0-F6FC-40F4-8E68-9C21D94BD19D.png)
+![a6dde93a1a06c36b97cc72bb4114d9b4](imges/067474C0-F6FC-40F4-8E68-9C21D94BD19D.png)
 ###### 透過 ab 測試單節點接口性能
 `$ ab -n 1000 -c 30 http://localhost:2103/aaron-zuul-extend-user-service/user/login`
 ###### limitRate 參數為 10；共耗時  98.905s
-![392bb3d92980699938d90b44d20d9227](imgs/384F4524-B9AE-407B-A670-3886222FED92.png)
+![392bb3d92980699938d90b44d20d9227](imges/F7A70D14-AF52-4848-A7F3-300B6B5368DF.png)
 
 
 ##### 集群限流
 ###### 確認 api.clusterLimitRate 參數為10
 `$ ab -n 1000 -c 30 http://localhost:2103/aaron-zuul-extend-user-service/user/login`
 ###### api.clusterLimitRate 參數為 10（平均每2筆一次失敗）
-![d9fc03672371adda63b19d9151c17447](imgs/C9E47E5A-A22A-43EC-BF75-997EB7148945.png)
-![7e88d90b5ba0ef4e2f9f9064140409c2](imgs/E93D1CB4-8735-4831-A676-48484BDCF19D.png)
+![d9fc03672371adda63b19d9151c17447](imges/C465FD03-E50A-4E4D-961C-8D9127759129.png)
+![7e88d90b5ba0ef4e2f9f9064140409c2](imges/160EC7E7-C390-4909-ACCE-7F8CE82520B4.png)
 ###### 至 Apollo 配置中心 http://localhost:8070 將 api.clusterLimitRate 參數調整為 1000
 `$ ab -n 1000 -c 30 http://localhost:2103/aaron-zuul-extend-user-service/user/login` 
 ###### api.clusterLimitRate 參數為 1000（失敗大幅減少）
-![350aee390c7d77f760aedea9596d5d8d](imgs/8CF62714-F14B-4641-B1BE-CC0B2733ECC2.png)
-![ad047301ddd41f96a74f772bafb22a47](imgs/90F9B14C-98E9-4A59-B8B3-B3C1FE558478.png)
+![350aee390c7d77f760aedea9596d5d8d](imges/EA6B61AC-7B5D-426F-A348-CDD7468C309D.png)
+![ad047301ddd41f96a74f772bafb22a47](imges/04F03B0C-7C71-4185-9692-A84313041E63.png)
 
 ##### 服務降級
 ###### 至 Apollo 配置中心，配置服務資訊 http://localhost:8070，設置 downGradeServiceStr：aaron-zuul-extend-user-service
-![b691554ceb9e23cf57eefbea2bad4e2d](imgs/3DB526EE-6607-4F9E-9EA6-65EDE603B092.png)
-![198c160938aacfe5d5315aafcf6d7e5b](imgs/04F4677B-4A88-4438-BF2F-F5BE8776153A.png)
+![b691554ceb9e23cf57eefbea2bad4e2d](imges/5A5CEEAB-11A9-4186-95B4-FBA5117DB703.png)
+![198c160938aacfe5d5315aafcf6d7e5b](imges/2E564454-2949-4FCA-BFFC-AD97AAE4698F.png)
 ##### 調用降級的服務 http://localhost:2103/aaron-zuul-extend-user-service/user/login
-![8a0300bdc378a3020961d9def3e6920b](imgs/1D1F52BC-4C4C-40D7-B399-8C8F92C01D85.png)
-![1fe4a36a47ee700a39bffee60a8bedb6](imgs/A60B5900-47D2-4F80-92BC-3ACBDE34581B.png)
+![8a0300bdc378a3020961d9def3e6920b](imges/5CB385CE-D8C7-4CFC-96E1-ECF41F7C62A9.png)
+![1fe4a36a47ee700a39bffee60a8bedb6](imges/6084917B-297F-4356-8A57-67FF37B84CE0.png)
 
 
 ##### 灰度發布（根據用戶做灰度發布）
 ###### 至 Apollo 配置中心，配置服務資訊及用戶資訊（可訪問的用戶 ID） http://localhost:8070，設置 grayPushServers：aaron-zuul-extend-article-service 及 grayPushUsers：1001
-![f23aecdaf018e681efe231997665c036](imgs/A7EF09C4-471D-4241-8FA6-B3248BBEEC5E.png)
-![4d71d5f7c29a95a10f9cef79044e9670](imgs/49942045-E124-4F68-9E8C-2F46815008AC.png)
+![f23aecdaf018e681efe231997665c036](imges/8002E5D3-9817-4FEE-B083-CAE9D6408BCF.png)
+![4d71d5f7c29a95a10f9cef79044e9670](imges/F8288F41-3D05-4DE4-AAC9-B545CE9E7845.png)
 ##### 調用灰度發布服務
 `GET http://localhost:2103/aaron-zuul-extend-article-service/article/callHello`
 ###### 修改設置 grayPushUsers：1002
-![4e1a0d9c97ae0a9ff592b7218de5f903](imgs/03DFDFD5-01EA-4D18-B63E-590C7371275E.png)
-![b5713bfacef03caf4e4bef9a69541d9f](imgs/0CC3C57A-0F55-4047-B1EC-6BAAD0FB1462.png)
+![4e1a0d9c97ae0a9ff592b7218de5f903](imges/9F39AAE5-6A5E-460B-B4E7-367596A42971.png)
+![b5713bfacef03caf4e4bef9a69541d9f](imges/19A36820-2786-442B-90FC-6ACE9123AEA7.png)
 ###### 再次調用調用灰度發布服務，變為不合法使用者
-![07e945560697ccfa340976fd245d129c](imgs/22D6039E-C39F-4C96-9861-F2298397BDB7.png)
+![07e945560697ccfa340976fd245d129c](imges/438E5637-CE15-4445-B2C5-BAE43EAEC5FB.png)
 
 
 ### 維運
@@ -994,20 +994,20 @@ server.port=8083
 ###### 調用認證服務
 `POST http://localhost:2103/aaron-zuul-extend-user-service/user/login`
 ###### 回覆結果
-![d934160c4d053bb47f5b3df820e349d6](imgs/5FBE0C5A-D4A6-4AE9-822C-AF40DCC5DB91.png)
+![d934160c4d053bb47f5b3df820e349d6](imges/CBF8BD00-4E1C-45D4-A7D8-7B836CCF0929.png)
 
 - 透過取得的 Token 調用服務：透過 aron-zuul-extend-user-service 服務端調用
 ###### 調用服務前 Postman Headers Key：Value 需設為 Authorization：Token值
 `GET http://localhost:2103/aaron-zuul-extend-user-service/user/hello`
-![581f67878a916e1482f592b7947e4f5f](imgs/A88BD210-CCB5-40A5-BA51-D3708543C8B2.png)
-![8d85b5f382bc50ff5e41aaa668b126be](imgs/1C79CB46-EDF5-47FB-BAD9-9AFD5BEBCABC.png)
+![581f67878a916e1482f592b7947e4f5f](imges/28188E01-9FC9-45EE-9B68-D27B191D3C00.png)
+![8d85b5f382bc50ff5e41aaa668b126be](imges/09059CD2-CD8D-4BAE-ABD6-87231EA29E23.png)
 
 - 透過取得的 Token 調用服務：透過 aaron-zuul-extend-article-service 客戶端調用
 ###### 調用服務前 Postman Headers Key：Value 需設為 Authorization：Token值
 `GET http://localhost:2103/aaron-zuul-extend-article-service/article/callHello`
 ###### 調用結果
-![19826b7aabfbf8e49c80d290cf45a78e](imgs/87C05F2B-1AF8-4451-83A2-C355CA17B6B4.png)
-![65a9a6fbe72ca0c804120d9ba42d1033](imgs/04FC4D79-46C4-494F-BFAB-A484AA050A96.png)
+![19826b7aabfbf8e49c80d290cf45a78e](imges/5627AE69-B245-4345-9115-C4EBE1BCFCAF.png)
+![65a9a6fbe72ca0c804120d9ba42d1033](imges/5C21921F-41F1-42FD-9949-BD4B7200E829.png)
 
 ### 維運
 
