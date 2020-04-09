@@ -36,6 +36,7 @@ public class EnterpriseProductUserController {
         if (param == null || param.getEid() == null || StringUtils.isBlank(param.getUid())) {
             return ResponseData.failByParam("eid 和 uid 不能為空");
         }
+        System.err.println(param.getEid() + "\t" + param.getUid());
         return ResponseData.ok(enterpriseProductUserService.login(param.getEid(), param.getUid()));
     }
    
@@ -44,4 +45,5 @@ public class EnterpriseProductUserController {
     	System.err.println("用戶ID:" + request.getHeader("uid"));
     	return "hello";
     }
+
 }

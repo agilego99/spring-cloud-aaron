@@ -14,7 +14,7 @@ public class EnterpriseProductUserServiceImpl implements EnterpriseProductUserSe
     @Override
     public String login(Long eid, String uid) {
         JWTUtils jwtUtils = JWTUtils.getInstance();
-        if (eid.equals(1L) && uid.equals("1001")) {
+        if (eid.equals(1L) && uid.equals("1001") || eid.equals(2L) && uid.equals("1002")) {
             return jwtUtils.getToken(uid);
         }
         return null;

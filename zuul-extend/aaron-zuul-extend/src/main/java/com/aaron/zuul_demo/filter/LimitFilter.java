@@ -20,6 +20,7 @@ import com.netflix.zuul.context.RequestContext;
  **/
 public class LimitFilter extends ZuulFilter {
     private Logger log = LoggerFactory.getLogger(LimitFilter.class);
+    // 令牌桶每秒丟100個令牌
     public static volatile RateLimiter rateLimiter = RateLimiter.create(100.0);
    
     @Autowired
@@ -43,7 +44,11 @@ public class LimitFilter extends ZuulFilter {
     public int filterOrder() {
         return 0;
     }
-    // 集群限流，透過 Redis 管理
+
+    /**
+     * 集群限流，透過 Redis 管理
+     * @return
+     */
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
@@ -53,14 +58,19 @@ public class LimitFilter extends ZuulFilter {
         String key = "fsh-api-rate-limit-" + currentSecond;
         try {
             if (!redisTemplate.hasKey(key)) {
-                redisTemplate.opsForValue().set(key, 0L, 100, TimeUnit.SECONDS);
+                // Every 100ms reset value
+                redisTemplate.opsForValue().set(key, 0L, 100, TimeUnit.MILLISECONDS);
+                System.err.println("counter reset");
             }
             // 當集群中當前秒的併發量達到了設定的值，不進行處理，注意集群中的網關所在服務器時間必須同步
             if (redisTemplate.opsForValue().increment(key, 1) > basicConf.getClusterLimitRate()) {
+
+                System.err.println("Resis " + redisTemplate.opsForValue().increment(key, 1) + " > " + "api.clusterLimitRate " + basicConf.getClusterLimitRate());
+
                 ctx.setSendZuulResponse(false);
                 ctx.set("isSuccess", false);
                 ResponseData data = ResponseData.fail("當前負載太高，請稍後重試", ResponseCode.LIMIT_ERROR_CODE.getCode());
-                System.err.print("當前負載太高，請稍後重試\t" + ResponseCode.LIMIT_ERROR_CODE.getCode());
+                System.err.println("當前負載太高，請稍後重試\t" + ResponseCode.LIMIT_ERROR_CODE.getCode());
                 ctx.setResponseBody(JsonUtils.toJson(data));
                 ctx.getResponse().setContentType("application/json; charset=utf-8");
                 return null;
@@ -71,14 +81,21 @@ public class LimitFilter extends ZuulFilter {
              *  Redis 掛掉等異常處理，可以繼續單節點限流
              *  啟用單節點限流
              */
+            System.err.println(e.toString()+"\t集群限流異常\t啟動單節點限流");
             rateLimiter.acquire();
         }
         return null;
     }
     
-    // 總體限流；單節點限流
+    //
+    /**
+     * 總體限流；單節點限流
+     * RateLimiter 令牌桶演算法
+     * 以固定的速率一次丟一個數量的令牌
+     * @return
+     */
 //    @Override
-//    public Object run(){ 
+//    public Object run(){
 //    	rateLimiter.acquire();
 //    	return null;
 //    }

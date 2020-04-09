@@ -21,9 +21,9 @@ public class BasicConf {
  	/** API接口白名單，多個用逗號分隔
  	 *  如不需要認證接口時，直接在 Apollo 配置中心修配置資訊即可即時生效
  	 */
- 	@Value("${apiWhiteStr:/aaron-zuul-extend-user-service/user/login}")
- 	private String apiWhiteStr;
- 	
+	@Value("${apiWhiteStr:/aaron-zuul-extend-user-service/user/login}")
+	private String apiWhiteStr;
+
     // 單節點限流 Apollo 配置
  	@Value("${limitRate:10}")
  	private double limitRate;
@@ -53,6 +53,7 @@ public class BasicConf {
  			System.err.println("limitRate\t" + config.getDoubleProperty("limitRate", 10.0));
  			LimitFilter.rateLimiter = RateLimiter.create(config.getDoubleProperty("limitRate", 10.0));
  		}
+
  				
  		// clusterLimitRate 集群限流
  		if (changeEvent.isChanged("api.clusterLimitRate")) {
