@@ -49,43 +49,43 @@ public class LimitFilter extends ZuulFilter {
      * 集群限流，透過 Redis 管理
      * @return
      */
-    @Override
-    public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        Long currentSecond = System.currentTimeMillis() / 1000;
-        // 轉換為時間戳（秒）
-        // 可以搭配 Zuul 提供的 Router Filter 來做，在 Router Filter 中可以直接獲取當前請求是要轉發到哪個服務。
-        String key = "fsh-api-rate-limit-" + currentSecond;
-        try {
-            if (!redisTemplate.hasKey(key)) {
-                // Every 100ms reset value
-                redisTemplate.opsForValue().set(key, 0L, 100, TimeUnit.MILLISECONDS);
-                System.err.println("counter reset");
-            }
-            // 當集群中當前秒的併發量達到了設定的值，不進行處理，注意集群中的網關所在服務器時間必須同步
-            if (redisTemplate.opsForValue().increment(key, 1) > basicConf.getClusterLimitRate()) {
-
-                System.err.println("Resis " + redisTemplate.opsForValue().increment(key, 1) + " > " + "api.clusterLimitRate " + basicConf.getClusterLimitRate());
-
-                ctx.setSendZuulResponse(false);
-                ctx.set("isSuccess", false);
-                ResponseData data = ResponseData.fail("當前負載太高，請稍後重試", ResponseCode.LIMIT_ERROR_CODE.getCode());
-                System.err.println("當前負載太高，請稍後重試\t" + ResponseCode.LIMIT_ERROR_CODE.getCode());
-                ctx.setResponseBody(JsonUtils.toJson(data));
-                ctx.getResponse().setContentType("application/json; charset=utf-8");
-                return null;
-            }
-        } catch (Exception e) {
-           log.error("集群限流異常", e);
-            /**
-             *  Redis 掛掉等異常處理，可以繼續單節點限流
-             *  啟用單節點限流
-             */
-            System.err.println(e.toString()+"\t集群限流異常\t啟動單節點限流");
-            rateLimiter.acquire();
-        }
-        return null;
-    }
+//    @Override
+//    public Object run() {
+//        RequestContext ctx = RequestContext.getCurrentContext();
+//        Long currentSecond = System.currentTimeMillis() / 1000;
+//        // 轉換為時間戳（秒）
+//        // 可以搭配 Zuul 提供的 Router Filter 來做，在 Router Filter 中可以直接獲取當前請求是要轉發到哪個服務。
+//        String key = "fsh-api-rate-limit-" + currentSecond;
+//        try {
+//            if (!redisTemplate.hasKey(key)) {
+//                // Every 100ms reset value
+//                redisTemplate.opsForValue().set(key, 0L, 100, TimeUnit.MILLISECONDS);
+//                System.err.println("counter reset");
+//            }
+//            // 當集群中當前秒的併發量達到了設定的值，不進行處理，注意集群中的網關所在服務器時間必須同步
+//            if (redisTemplate.opsForValue().increment(key, 1) > basicConf.getClusterLimitRate()) {
+//
+//                System.err.println("Resis " + redisTemplate.opsForValue().increment(key, 1) + " > " + "api.clusterLimitRate " + basicConf.getClusterLimitRate());
+//
+//                ctx.setSendZuulResponse(false);
+//                ctx.set("isSuccess", false);
+//                ResponseData data = ResponseData.fail("當前負載太高，請稍後重試", ResponseCode.LIMIT_ERROR_CODE.getCode());
+//                System.err.println("當前負載太高，請稍後重試\t" + ResponseCode.LIMIT_ERROR_CODE.getCode());
+//                ctx.setResponseBody(JsonUtils.toJson(data));
+//                ctx.getResponse().setContentType("application/json; charset=utf-8");
+//                return null;
+//            }
+//        } catch (Exception e) {
+//           log.error("集群限流異常", e);
+//            /**
+//             *  Redis 掛掉等異常處理，可以繼續單節點限流
+//             *  啟用單節點限流
+//             */
+//            System.err.println(e.toString()+"\t集群限流異常\t啟動單節點限流");
+//            rateLimiter.acquire();
+//        }
+//        return null;
+//    }
     
     //
     /**
@@ -94,9 +94,9 @@ public class LimitFilter extends ZuulFilter {
      * 以固定的速率一次丟一個數量的令牌
      * @return
      */
-//    @Override
-//    public Object run(){
-//    	rateLimiter.acquire();
-//    	return null;
-//    }
+    @Override
+    public Object run(){
+    	rateLimiter.acquire();
+    	return null;
+    }
 }

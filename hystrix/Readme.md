@@ -1,8 +1,8 @@
 # Hystrix：服務容錯框架，能夠防止服務的雪崩效應
 - 通過 HystrixCommand 對調用進行隔離，以阻止故障的連鎖效應，能夠讓接口調用快速失敗並迅速恢復正常
-![dd3668ef35a0a577301f02504dab569b](imgs/8B701AEB-9C77-4AED-BE6D-03300274F168.png)
-![e6bfcbebdafa47c6981ba7c5f3ccee0e](imgs/1F79080D-792D-4997-A834-35C22248816E.png)
-![54117f50e4dfbb9776be92565e51eaaf](imgs/F06AC004-293C-469B-9403-F5FCA4362018.png)
+![dd3668ef35a0a577301f02504dab569b](imges/E768FFC5-0F15-47F1-8305-705521DA8BC5.png)
+![eecb850196f0688df42abaa4f2b90544](imges/B21B8983-FA53-4BC2-808F-D412A9DF13D2.png)
+![54117f50e4dfbb9776be92565e51eaaf](imges/4A1FD2BC-E27F-4DE5-A242-B0B54F829F49.png)
 
 ##### 高可用性設計原則：
 - 對依賴服務調用時出現的調用延遲和調用失敗進行控制和容錯保護。
@@ -259,12 +259,12 @@ public class MyHystrixCollapser extends HystrixCollapser<List<String>, String, S
 
 ### 測試
 - demo1.App.java
-![14642cac58175c16be81a2747397f9a9](imgs/0678110F-E5A1-4F27-BB1A-1ECFDFC854A0.png)
-![ccbe28974a62330f591006a9fb9eab3b](imgs/C7384FA9-79DD-467A-BAD9-F67D2B8D4257.png)
+![14642cac58175c16be81a2747397f9a9](imges/4CE522CD-0BB9-4650-BE43-1C30A1A60603.png)
+![ccbe28974a62330f591006a9fb9eab3b](imges/FE214929-AE60-4BA9-92E4-D24E77E808CC.png)
 - deme2.CacheCleanApp.java
-![a63e0238c985222562617118e7a2c6d2](imgs/0FDD8A66-FD9D-49EB-97E2-23447D318BB9.png)
+![a63e0238c985222562617118e7a2c6d2](imges/D30E3364-8883-4AD8-ADD6-8C08F5462412.png)
 - deme3.CollapserApp.java
-![40384ca1778eeb6924a45727d997d899](imgs/BC967B23-9D20-4826-B8D5-5D27337D9B40.png)
+![40384ca1778eeb6924a45727d997d899](imges/ED076A3F-F661-4DE9-86E3-601DBCAAF560.png)
 ### 維運
 
 
@@ -316,8 +316,8 @@ public class App {
 		</dependency>
 ```
 ### 測試
-![d6785d82c64479a9a934a46223469135](imgs/E8CE20CC-85A2-4DC8-BF5D-BF7102DD8FD6.png)
-![68de3f3ce0d24b71a5d32a7ef2c76f90](imgs/F5E58159-E5FF-413C-B729-1BF440E9B69F.png)
+![d6785d82c64479a9a934a46223469135](imges/72E3C65A-B562-4E1A-9578-47AB81A18227.png)
+![68de3f3ce0d24b71a5d32a7ef2c76f90](imges/A7AB97C1-D7AB-44F5-BF5A-3DD26FC26633.png)
 
 ### 維運
 - 服務接口
@@ -383,9 +383,9 @@ feign.hystrix.enabled=true
     ...
 ```
 ### 測試
-![9ac87deb7200ff8b34f71993225bebc6](imgs/554EC88E-1FC2-4E69-9C25-BBF752295AEB.png)
+![9ac87deb7200ff8b34f71993225bebc6](imges/514EF53B-9D74-4FAC-8A41-87E07211CC7D.png)
 - 停止 aaron-eureka-client-user-service
-![b7176ac9c06762e55a9a0ad937003fa1](imgs/67A3DA0B-3967-471A-BEBA-403B4C39C9AC.png)
+![b7176ac9c06762e55a9a0ad937003fa1](imges/E6F47FE0-BF61-4F27-A6D5-04AB1AC254E0.png)
 - UserRemoteClientFallbackFactory.java 實現 FallbackFactory 測試結果
 ```
 2019-08-03 16:16:39.267 ERROR 48894 --- [-user-service-3] c.a.f.r.UserRemoteClientFallbackFactory  : UserRemoteClient 回退：
@@ -466,9 +466,9 @@ turbine.clusterNameExpression=new String("default")
 ### 測試
 - 訪問 `http://localhost:8086/actuator/hystrix.stream`；調用 `http://localhost:8086/callHello`
     - 調用前 
-    ![d98df96c4369190c381b7a061c02d669](imgs/A9B29801-CCFB-48D6-9D68-880E419E3EDF.png)
+    ![d98df96c4369190c381b7a061c02d669](imges/76360BEA-4EA1-4DCB-8E56-B17EB56D5A64.png)
     - 調用後
-    ![6ba7d1a29a88b8bc02555a077f7f846c](imgs/F9ED8E50-B6C0-4A3E-BA55-5B166F2483FD.png)
+    ![6ba7d1a29a88b8bc02555a077f7f846c](imges/044FD34B-732B-47F1-ACA8-1407FC9F5D97.png)
 - 進入 Hystrix 管理介面
 `http://localhost:9011/hystrix`
     - 輸入以下內容
@@ -480,7 +480,7 @@ http://localhost:8086/actuator/hystrix.stream
 # Title 服務名稱（Opertional）
 aaron-hystrix-feign-demo
 ```
-![88ae0aa1be407b2c15df6fe7d5b5097e](imgs/8737DF1A-8F3F-4C1D-B39F-51C70EFA16DF.png)
+![88ae0aa1be407b2c15df6fe7d5b5097e](imges/B20F80F1-DF24-4E2F-A6DE-EFFC9034831D.png)
 
 ##### 測試 Turbine 集群功能
 - 進入 Hystrix 管理介面
@@ -493,7 +493,7 @@ aaron-hystrix-feign-demo
 # Title 服務名稱（Opertional）
 default
 ```
-![c1f2de95207e44269a1d5e5c68bb147d](imgs/A20B4891-D21E-4065-8D4B-004E85393863.png)
+![c1f2de95207e44269a1d5e5c68bb147d](imges/E3164E15-2C70-47BA-B082-828EEB0280EE.png)
 
 ### 維運
 
