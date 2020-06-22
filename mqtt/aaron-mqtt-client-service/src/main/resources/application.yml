@@ -1,106 +1,151 @@
-# aaron-mqtt-client-service 
+# mqtt
+# Git: https://gitlab.com/wistron-project/occ-mqtt
+# Git Wiki：https://gitlab.com/wistron-project/occ-mqtt/wikis/home
 
-# dev：
-      #_nchc_top_mqtt
-
+# prod：
 # test：
-      # _player_mqtt                        
-      
+# _test
+# _test_serverr
+# _player_mqtt
+# dev：
+
 spring:
   profiles:
-   active: _dev
-logging:                       
-       config: classpath:logback${spring.profiles.active}.xml     
-       level:
-            root: INFO
+    active: _dev
+logging:
+  config: classpath:logback${spring.profiles.active}.xml
+  level:
+    root: INFO
 
 ---
 spring.profiles: _dev
 spring:
-    profiles: 
-       include: _nchc_top_mqtt,_server
+  profiles:
+    include: _swpc_top_mqtt_mac,_test_server
 
 ---
-spring.profiles: _test 
+spring.profiles: _test
 spring:
-    profiles: 
-       include: _player_mqtt,_server
+  profiles:
+    include: _player_mqtt,_test_server
 
-                           
-##### Resource #####    
+
+
+
+
+##### Resource #####
 
 ---
 spring:
-  profiles: _server 
+  profiles: _test_server
 server:
   port: 8888
   tomcat:
     uri-encoding: UTF-8
- 
+  session:
+    timeout: -1000
+security:
+  basic:
+    enabled: false
+  user:
+    name: apiUser
+    password: fAy<J}BKAJIz+7)9gHfR
+
+
 ---
 spring:
-  profiles: _nchc_top_mqtt
+  profiles: _player_mqtt
 mqtt:
-      broker:
-             mac:
-             url: ssl://iot.omega.smartiply.com:8883
-             security:
-                    hasauth: false
-                    username: admin       
-                    password: password
-                    hastls: true
-                    ca: 
-                        path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-nchc/DST_Root_CA_X3.pem
-                        #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\mqtt-top-nchc\DST_Root_CA_X3.pem
-                    cert:
-                        path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-nchc/certificate.crt
-                        #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\mqtt-top-nchc\certificate.crt
-                    key:
-                        path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-nchc/private.key
-                        #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\mqtt-top-nchc\private.key
-             connect:
-                     timeout: 300
-             keep:
-                  alive: 10
-             qos: 0 
-             scriber:
-                     topic:
-                           gbus: vehicle/report/gbus
-                           mkz:  vehicle/report/mkz
-                           itri: vehicle/report/itri
-                           cht:  vehicle/report/cht
-                           test: vehicle/report/test
-                           
+  broker:
+    mac:
+    url: ssl://10.34.172.109:8883
+    security:
+      hasauth: false
+      username: admin
+      password: password
+      hastls: true
+      ca:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-player/ca.crt
+      cert:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-player/client.crt
+      key:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-player/client.key
+
+    connect:
+      timeout: 300
+    keep:
+      alive: 10
+    qos: 0
+    scriber:
+      topic:
+        motcspat: roadside/signalcontrol/motcspat
+        priority: roadside/traffichandler/priority
+        distance: roadside/traffichandler/cms
+
 ---
 spring:
-  profiles: _player_mqtt            
+  profiles: _nchc_top_mqtt_mac
 mqtt:
-      broker:
-             mac: 
-             url: ssl://10.34.172.109:8883
-             security:
-                    hasauth: false
-                    username: admin       
-                    password: password
-                    hastls: true
-                    ca:
-                         path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-player/ca.crt
-                         #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\ca.crt
-                    cert:
-                         path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-player/client.crt
-                         #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\client.crt
-                    key:
-                         path: /Users/Kevin/Agile-MAC/eclipseWorkspace-MAC/Spring-Cloud/Aaron-Cloud/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-player/client.key
-                         #path: C:\\mqtt\aaron-mqtt-client-service\src\main\resources\client.key
-             connect:
-                     timeout: 300
-             keep:
-                  alive: 10
-             qos: 0 
-             scriber:
-                     topic:
-                           gbus: vehicle/report/gbus
-                           mkz:  vehicle/report/ncku
-                           itri: vehicle/report/itri
-                           cht:  vehicle/report/cht
-                           test: vehicle/report/test
+  broker:
+    mac:
+    url: ssl://iot.stois.nchc.tw:8884
+    security:
+      hasauth: false
+      username: admin
+      password: password
+      hastls: true
+      ca:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-top-nchc/iot_stois_broker_top_root_CA.crt
+      cert:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-top-nchc/iot_stois_broker_top_client.crt
+      key:
+        path: /Users/aaron/develop/workspace/eclipse/wst-occ/occ-mqtt/src/main/resources/mqtt-top-nchc/iot_stois_broker_top_client.key
+    connect:
+      timeout: 300
+    keep:
+      alive: 10
+    qos: 0
+    scriber:
+      topic:
+        motcspat: roadside/signalcontrol/motcspat
+        priority: roadside/traffichandler/priority
+        distance: roadside/traffichandler/cms
+        gbus: vehicle/report/gbus
+        mkz: vehicle/report/mkz
+        itri: vehicle/report/itri
+        cht: vehicle/report/cht
+        test: vehicle/report/test
+
+---
+spring:
+  profiles: _swpc_top_mqtt_mac
+mqtt:
+  broker:
+    mac:
+    url: ssl://iot.stois.nchc.tw:3051
+    security:
+      hasauth: false
+      username: admin
+      password: password
+      hastls: true
+      ca:
+        path: /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-swpc/ca.crt
+      cert:
+        path: /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-swpc/admin.crt
+      key:
+        path: /Users/aaron/develop/workspace/eclipse/spring-cloud-aaron/mqtt/aaron-mqtt-client-service/src/main/resources/mqtt-top-swpc/admin.key
+    connect:
+      timeout: 300
+    keep:
+      alive: 10
+    qos: 0
+    scriber:
+      topic:
+        motcspat: roadside/signalcontrol/motcspat
+        priority: roadside/traffichandler/priority
+        distance: roadside/traffichandler/cms
+        gbus: vehicle/report/gbus
+        mkz: vehicle/report/mkz
+        itri: vehicle/report/itri
+        cht: vehicle/report/cht
+        test: vehicle/report/test

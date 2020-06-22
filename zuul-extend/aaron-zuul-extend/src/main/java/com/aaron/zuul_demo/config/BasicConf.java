@@ -8,10 +8,12 @@ import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 import com.google.common.util.concurrent.RateLimiter;
 import lombok.Data;
+
 /**
  * 動態管理不需要攔截的 API 請求
  * 並非所有的 API 都需要認證，比如登錄接口。這時可動態添加 API 白名單的功能，凡是在此此白名單當中就不需要認證。
  * 搭配 Apollo 配置管理中心
+ *
  * @author Aaron
  */
 @Data
@@ -44,8 +46,13 @@ public class BasicConf {
  	
  	@ApolloConfig
  	private Config config;
- 	
- 	@ApolloConfigChangeListener
+
+    /**
+     * On change.
+     *
+     * @param changeEvent the change event
+     */
+    @ApolloConfigChangeListener
  	public void onChange(ConfigChangeEvent changeEvent) {
  		// limitRate 
  		if (changeEvent.isChanged("limitRate")) {

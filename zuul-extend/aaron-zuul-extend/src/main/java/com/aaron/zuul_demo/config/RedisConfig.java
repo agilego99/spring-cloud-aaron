@@ -6,10 +6,20 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+/**
+ * The type Redis config.
+ */
 @Configuration
 public class RedisConfig {
 
-	// RedisTemplate 配置
+    /**
+     * Redis template redis template.
+     *
+     * @param jedisConnectionFactory the jedis connection factory
+     * @return the redis template
+     */
+// RedisTemplate 配置
     @Bean(name = "longRedisTemplate")
     public RedisTemplate<String, Long> redisTemplate(RedisConnectionFactory jedisConnectionFactory) {
         RedisTemplate<String, Long> template = new RedisTemplate<String, Long>();

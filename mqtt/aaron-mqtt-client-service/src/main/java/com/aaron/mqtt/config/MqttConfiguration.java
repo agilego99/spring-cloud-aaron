@@ -73,16 +73,16 @@ public class MqttConfiguration {
     
 	@Value("${mqtt.broker.scriber.topic.gbus}")
 	private String gbusSubTopic;
-    
+
 	@Value("${mqtt.broker.scriber.topic.mkz}")
 	private String mkzSubTopic;
-	
+
 	@Value("${mqtt.broker.scriber.topic.itri}")
 	private String itriSubTopic;
-	
+
 	@Value("${mqtt.broker.scriber.topic.cht}")
 	private String chtSubTopic;
-	
+
 	@Value("${mqtt.broker.scriber.topic.test}")
 	private String testSubTopic;
 	

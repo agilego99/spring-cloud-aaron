@@ -12,24 +12,43 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * 灰度發佈轉發規則，基於RoundRobinRule規則改造
+ *
  * @author aaron
- **/
+ */
 public class GrayPushRule extends AbstractLoadBalancerRule {
     private AtomicInteger nextServerCyclicCounter;
     private static final boolean AVAILABLE_ONLY_SERVERS = true;
     private static final boolean ALL_SERVERS = false;
     private static Logger log = LoggerFactory.getLogger(RoundRobinRule.class);
+
+    /**
+     * Instantiates a new Gray push rule.
+     */
     public GrayPushRule() {
         this.nextServerCyclicCounter = new AtomicInteger(0);
     }
+
+    /**
+     * Instantiates a new Gray push rule.
+     *
+     * @param lb the lb
+     */
     public GrayPushRule(ILoadBalancer lb) {
         this();
         this.setLoadBalancer(lb);
     }
-    
-    // 選擇可用的服務
+
+    /**
+     * Choose server.
+     *
+     * @param lb  the lb
+     * @param key the key
+     * @return the server
+     */
+// 選擇可用的服務
     public Server choose(ILoadBalancer lb, Object key) {
         if (lb == null) {
             log.warn("no load balancer");

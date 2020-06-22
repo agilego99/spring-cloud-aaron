@@ -15,13 +15,17 @@ import com.netflix.zuul.context.RequestContext;
 
 /**
  * 服務降級過濾器
+ *
  * @author aaron
- **/
+ */
 public class DownGradeFilter extends ZuulFilter {
 
     @Autowired
     private BasicConf basicConf;
 
+    /**
+     * Instantiates a new Down grade filter.
+     */
     public DownGradeFilter() {
         super();
     }

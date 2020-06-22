@@ -4,14 +4,20 @@ import com.aaron.zuul_demo.config.BasicConf;
 import com.aaron.zuul_demo.support.RibbonFilterContextHolder;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+
 /**
  * 灰度發布過濾器
+ *
  * @author aaron
- * @create 2019/8/26
- **/
+ * @create 2019 /8/26
+ */
 public class GrayPushFilter extends ZuulFilter {
     @Autowired
     private BasicConf basicConf;
+
+    /**
+     * Instantiates a new Gray push filter.
+     */
     public GrayPushFilter() {
         super();
     }

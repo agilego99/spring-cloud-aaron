@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Default ribbon filter context.
+ */
 public class DefaultRibbonFilterContext implements RibbonFilterContext {
     private final Map<String, String> attributes = new HashMap<String, String>();
 

@@ -18,14 +18,18 @@ import com.netflix.zuul.context.RequestContext;
 
 /**
  * 認證過濾器
+ *
  * @author aaron
- **/
+ */
 public class AuthFilter extends ZuulFilter {
 
     // 注入 BasicConf 配置
 	@Autowired
     private BasicConf basicConf;
 
+    /**
+     * Instantiates a new Auth filter.
+     */
     public AuthFilter() {
         super();
     }
