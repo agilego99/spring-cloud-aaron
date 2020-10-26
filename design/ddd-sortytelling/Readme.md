@@ -37,12 +37,14 @@ The critical complexity of many software projects is in understanding the domain
 **A short history of Domain Storytelling**
 ![b28c3bb298391a8b643216f6665f6ba8](imgs/C8EA5B3C-8BC1-41EC-B36D-45A3D4602161.png)
 
-[ADOxx] 是用於實現建模方法的元建模開發和配置平台。可以使用該平台來實現完整的建模方法，該平台不僅包括建模語言，還包括以機械和算法的形式進行的建模過程以及相應的功能。([adoxx.org Home](https://www.adoxx.org/live/home)、[ADOxx Hello World Video](https://www.youtube.com/watch?v=a6f52AZdp0o&feature=emb_rel_end))
+[adoxx] 是用於實現建模方法的元建模開發和配置平台。可以使用該平台來實現完整的建模方法，該平台不僅包括建模語言，還包括以機械和算法的形式進行的建模過程以及相應的功能。([adoxx.org Home](https://www.adoxx.org/live/home)、[ADOxx Hello World Video](https://www.youtube.com/watch?v=a6f52AZdp0o&feature=emb_rel_end))
 
 ### What is (Domain) Storytelling?
 [An Introduction to Domain Storytelling](https://youtu.be/d9k9Szkdprk)
 
-***Q&A 重點內容***
+領域敘事（Domain storytelling）是一種發現領域中人與系統如何共事的方式，可用於識別各個界限上下文，以及它們之間是如何互聯的。近期在阿姆斯特丹召開的DDD 2018 歐洲大會上，來自於 Workplace Solutions 的演講者 Stefan Hofer 和 Henning Schwentner 做了演講([ Domain-Driven Design Europe](https://youtu.be/Y1ykXnl6r7s))。兩位演講者在使用領域敘事方式與領域專家開展對話上具有多年的經驗。在他們看來，領域敘事是建模工具箱中額外添加的一種有用工具。
+
+***[Q&A 重點內容]***
 | 時間 | 重點 |
 | --- | --- |
 | 32m15s | 相較 ES，ST 更適合在團隊合作的時候使用，更具形象化的呈現方式，有助擬具大家共識 |
@@ -50,9 +52,6 @@ The critical complexity of many software projects is in understanding the domain
 | 34m18|工具本身非重點，背後目的是如何幫助用戶更好地完成工作|
 | 38.44 |避免無謂假設(那個可能發生、這個也能發生...很多可能發生)，經過一個小時討論，最終可能仍無所獲，因為並沒有講到真正且實際情況。因此，最重要的規則為要從透到尾講一個的故事，細節沒有也無所謂， 因為不能為所有的事物建立完美的模型|
 |39.49 | 開始 ST前，第一步要做的事收集不同的用例，作為決定解決哪些是最相關的問題|
-
-
-領域敘事（Domain storytelling）是一種發現領域中人與系統如何共事的方式，可用於識別各個界限上下文，以及它們之間是如何互聯的。近期在阿姆斯特丹召開的DDD 2018 歐洲大會上，來自於 Workplace Solutions 的演講者 Stefan Hofer 和 Henning Schwentner 做了演講([ Domain-Driven Design Europe](https://youtu.be/Y1ykXnl6r7s))。兩位演講者在使用領域敘事方式與領域專家開展對話上具有多年的經驗。在他們看來，領域敘事是建模工具箱中額外添加的一種有用工具。
 
 
 **通過講故事將領域知識轉換為商業軟體：**
@@ -97,11 +96,15 @@ Storytelling 根據相關經驗，講故事可以幫助……
 
 
 #### 探索與聚合（from 業務規則）
-[近一步探索](/dst/OB Subsystem_持續探索.dst)
+
+
+**[近一步探索](/dst/OB Subsystem_持續探索.dst)**
+
 仔細研究了 OB 領域的一些故事之後，知道諸如"挑檔"、"處理中繼線代表號"、"過濾檢查"、"處理出帳代表號"之類的術語。對最重要的過程有初步的了解。
 
 經過這一階段過程對流程進行概述有很大掌握，接下來進一步將所有故事放在一起(全局)為一個粗粒度的故事建模。
-[再一步探索與聚合](/dst/OB Subsystem_再進一步探索與聚合.dst)
+
+**[再一步探索與聚合](/dst/OB Subsystem_再進一步探索與聚合.dst)**
 
 * 增加 Alarm 物件，說明某活動(Activities)與時間具有相依
 * 增加 Info 物件，補充該工作物件(Work Object)短資訊
@@ -113,6 +116,8 @@ Storytelling 根據相關經驗，講故事可以幫助……
 
 **Dictionary**
 ![a7006ef6ae7657c7fa2a4a01e619cd08](imgs/2B93AC2A-5F2E-4183-870C-F858D220A3B7.png)
+
+
 
 * * * 
 #### Domain Storytelling Explained
