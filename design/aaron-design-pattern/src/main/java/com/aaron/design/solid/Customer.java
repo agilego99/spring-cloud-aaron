@@ -1,4 +1,4 @@
-package com.aaron.design.solid.domains;
+package com.aaron.design.solid;
 
 import lombok.Data;
 

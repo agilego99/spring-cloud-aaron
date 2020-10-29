@@ -1,28 +1,34 @@
 # OB 分析資料｜服務關聯｜採用 DDD 方法
 
-
 ### What's Doamin Driveen Design 簡介
-領域驅動設計（Domain-driven design，縮寫 DDD）是一種通過將實現連接到持續進化的模型來滿足複雜需求的軟件開發方法。
 
-領域驅動設計的前提是： 
-* 把項目的主要重點放在核心領域（core domain）和域邏輯 
-* 把複雜的設計放在有界域（bounded context）的模型上 
+先定義領域 (Domain) 是什麼。廣泛來說， domain (knowledge) 是指「一塊知識的範圍」。實務上，就是指「你工作上所需的一切知識集合」，包含 **「問題」以及「解決方案」**。
+
+由此可見，領域驅動設計（Domain-driven design，縮寫 DDD）是一種通過將實現連接到持續進化的模型來滿足複雜需求的軟體開發方法。
+
+
+**領域驅動設計的前提**
+
+* 把項目的主要重點放在核心領域（core domain）和域邏輯
+* 把複雜的設計放在有界域（bounded context）的模型上
 * 發起一個創造性的合作之間的技術和域界專家以迭代地完善的概念模式，解決特定領域的問題
 
+**Domain Driven Design 價值**
 
-### Domain Driven Design 價值
-Eric Evan：
-Tackling Complexity in the Heart of Software.
-**『軟體核心複雜度的解決方案』**
+大多時候，程式設計的重點並不在於使用哪個框架技術或優化幾個百分比，而是在於是否能忠實解決業務的需求。
 
-The critical complexity of many software projects is in understanding the domain itself.
-**『軟體開發過程，最為關鍵複雜根本的原因是目標領域本身就錯綜複
-雜』**
+**Eric Evan(Domain-Driven Design 發明者)：**
+
+Tackling Complexity in the Heart of Software.**『軟體核心複雜度的解決方案』**
+
+The critical complexity of many software projects is in understanding the domain itself.**『軟體開發過程，最為關鍵複雜根本的原因是目標領域本身就錯綜複雜』**
+
+Eric Evans 提倡開發人員也需要與領域專家合作以獲取足夠的業務知識 (business knowledge)，接著將領域知識與業務邏輯注入進程式碼模型之中，達成 **「程式即設計、設計即程式」的境界。**
+
+DDD 最大的價值之一就是把將商業領域的知識映照到程式碼中，解放「程式歸程式，業務歸業務」的傳統思維，在過程中甚至可以打破商業團隊與工程團隊間的藩籬。
 
 **DDD 其重要價值就是有系統地解構複雜的問題**
-
-### Domain Driven Design 解決領域複雜的作法
-讓系統開發專家與領域專家協同合作
+Domain Driven Design 解決領域複雜的作法，讓系統開發專家與領域專家協同合作
 
 **戰略流程**
 ![750f1b2d8e725c444f62bfee68e22ad3](imgs/FC2456EB-D821-4F29-921A-649071D73224.png)
@@ -32,7 +38,7 @@ The critical complexity of many software projects is in understanding the domain
 
 1. EventStorming（事件風暴）
 2. **Domain Storytelling（領域敘事）**
-![3686b6fcc04a79f72a70a87f701cbca6](imgs/C10E0885-2D8B-4883-80F5-46A8161E7322.png)
+![3fa5cce56e7724af93a6864016f4e514](imgs/5907931C-9A2A-4107-B9AD-08513B0F7AD7.png)
 
 **A short history of Domain Storytelling**
 ![b28c3bb298391a8b643216f6665f6ba8](imgs/C8EA5B3C-8BC1-41EC-B36D-45A3D4602161.png)
@@ -60,13 +66,11 @@ Storytelling 是一種協作建模技術，可突出人們如何協同工作。�
 **克服誤解，增進共識：**
 Storytelling 根據相關經驗，講故事可以幫助……
 ![a8be9e1e1f7c23679515710330f37f05](imgs/7C421EBE-2DDF-487C-BC44-F11FA4D7DA5C.png)
-***Aaron 哪些大公司採用***
 * …了解領域，
 * …在領域專家和IT專家之間建立共享的語言，
-* …談論軟件需求，
-* …實施正確的軟件，
+* …談論軟體需求，
+* …實施正確的軟體，
 * …並設計可行的，軟體支持的業務流程。
-
 
 ### 開始 Storytelling...
 #### 根據以下業務文件，開始動手...
@@ -110,13 +114,12 @@ Storytelling 根據相關經驗，講故事可以幫助……
 * 增加 Info 物件，補充該工作物件(Work Object)短資訊
 * 增加 textannotation 物件，補充該工作物件(Work Object)敘述性資訊
 
-**Aggregate 將概念相近的地方收攏放在一起，以 SOLID 系統設計為原則**
+**Aggregate 將概念相近的地方收攏放在一起，以單一功能職責概念為原則**
 ![aca854b8ede0a535150f19c417b8f769](imgs/A803BC77-E336-4251-97B3-0C4E47AEE89A.png)
 
 
 **Dictionary**
 ![a7006ef6ae7657c7fa2a4a01e619cd08](imgs/2B93AC2A-5F2E-4183-870C-F858D220A3B7.png)
-
 
 
 * * * 
@@ -148,10 +151,10 @@ Storytelling 根據相關經驗，講故事可以幫助……
 Hofer 認定，一旦發現了三種指示符，就找到了在兩個不同上下文間的一個有效界限。但 Hofer 強調指出，這種方法只表明瞭存在界限的跡象，而非確證。雖然在故事中，單向信息流是界限的一種指示符。但如果我們對領域做深入瞭解，就可能會發現該信息流在其它故事中表現出更複雜的特性。因此，這樣的信息流不能構成一種界限。
 
 
-#### Run the Modeler(License GPLv3.0)
-To run the modeler locally, download the latest release from GitHub([Source](https://github.com/WPS/domain-story-modeler)). Extract the zip file and open index.html in your browser.
+#### Run the Modeler(License：GPLv3.0)
+支援本地安裝及運行建模工具，可從GitHub下載最新版本([Source](https://github.com/WPS/domain-story-modeler))。下載後解開壓縮檔及執行相應指令後，在以瀏覽器開啟 index.html。
 
-[more icons](https://material.io/resources/icons/?style=outline)
+更多圖型，可參考 [more icons](https://material.io/resources/icons/?style=outline)
 ![b98acac2b5a7fc93414a4c67640d360a](imgs/CA27BCD2-56C1-4B66-A279-196119631C09.png)
 
 **啟動 Modeler 工具**
@@ -168,11 +171,3 @@ $ npm run dev
 4. [domain-story-modeler 建模工具](https://github.com/WPS/domain-story-modeler)
 5. [SOLID Sample Code](https://github.com/agilego99/spring-cloud-aaron/tree/master/design/aaron-design-pattern)
 6. [ADOxx文檔](https://www.adoxx.org/live/introduction-to-adoxx)
-
-
-[近一步思考...待續]
-
-1. OB Domain Analysis...
-    * 核心子域：業務成功的核心競爭力
-    * 通用子域：不是核心，但被整個業務系統所使用 （可以直接購買的）
-    * 支撐子域：不是核心，不被整個系統使用，完成業務的必要能力（可以外包出去的）
