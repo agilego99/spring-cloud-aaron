@@ -1,14 +1,13 @@
-package com.aaron.elasticsearch;
+package com.cht.rdp.elasticsearch;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.aaron.elasticsearch.App;
-import com.aaron.elasticsearch.po.Article;
-import com.aaron.elasticsearch.repository.ArticleRepository;
-import com.aaron.elasticsearch.repository.ArticleTemplate;
+import com.cht.rdp.elasticsearch.po.Article;
+import com.cht.rdp.elasticsearch.repository.ArticleRepository;
+import com.cht.rdp.elasticsearch.repository.ArticleTemplate;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 public class ArticleTest {
