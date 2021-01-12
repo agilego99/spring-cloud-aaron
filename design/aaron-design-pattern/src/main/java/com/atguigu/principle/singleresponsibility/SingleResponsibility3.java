@@ -6,10 +6,9 @@ public class SingleResponsibility3 {
 		// TODO Auto-generated method stub
 		Vehicle2 vehicle2  = new Vehicle2();
 		vehicle2.run("汽車");
-		vehicle2.runWater("輪船");
 		vehicle2.runAir("飛機");
+		vehicle2.runWater("輪船");
 	}
-
 }
 
 
@@ -18,9 +17,7 @@ public class SingleResponsibility3 {
 //2. 這裡雖然沒有在類這個級別上遵守單一職責原則，但是在方法級別上，仍然是遵守單一職責
 class Vehicle2 {
 	public void run(String vehicle) {
-		//處理
 		System.out.println(vehicle + " 在公路上運行....");
-
 	}
 
 	public void runAir(String vehicle) {
@@ -30,10 +27,4 @@ class Vehicle2 {
 	public void runWater(String vehicle) {
 		System.out.println(vehicle + " 在水中行....");
 	}
-	
-	//方法2.
-	//..
-	//..
-	
-	//...
 }

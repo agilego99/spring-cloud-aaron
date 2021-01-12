@@ -9,8 +9,10 @@ public class SingleResponsibility2 {
 		roadVehicle.run("汽車");
 
 		AirVehicle airVehicle = new AirVehicle();
-
 		airVehicle.run("飛機");
+
+		WaterVehicle waterVehicle = new WaterVehicle();
+		waterVehicle.run("輪船");
 	}
 
 }
@@ -22,18 +24,18 @@ public class SingleResponsibility2 {
 
 class RoadVehicle {
 	public void run(String vehicle) {
-		System.out.println(vehicle + "公路運行");
+		System.out.println(vehicle + "在公路運行");
 	}
 }
 
 class AirVehicle {
 	public void run(String vehicle) {
-		System.out.println(vehicle + "天空運行");
+		System.out.println(vehicle + "在天空運行");
 	}
 }
 
 class WaterVehicle {
 	public void run(String vehicle) {
-		System.out.println(vehicle + "水中運行");
+		System.out.println(vehicle + "在水中運行");
 	}
 }

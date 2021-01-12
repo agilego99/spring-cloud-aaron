@@ -1,5 +1,5 @@
 # ELK：是由 Elasticsearch、Logstash 及 Kibana 三個系統所組成的 Log 蒐集、分析、查詢系統．可以在不改變原系統架構的情況下，架設 ELK 蒐集、分析、查詢 Log，簡化過去繁鎖又沒效率的查找 Log 工作。
-![716a0f4fb390064a99f82106c61b34a1](imgs/81381D90-1F76-451C-893A-614488C6C7E2.png)
+![716a0f4fb390064a99f82106c61b34a1](imgs/3416CDB2-7904-44BF-B506-D60F5A4E55E6.png)
 ##### Elastic Stack 有四個主要組件
 - Elasticsearch：一個分布式 RESTful 搜索引擎，用於存儲所有收集的數據。
 - Logstash：Elastic Stack的數據處理組件，用於將傳入數據發送到 Elasticsearch。
@@ -8,10 +8,11 @@
 
 ### 參數
 - Ubuntu 18.04
-- Elasticsearch 6.4.3
-- Kibana 6.4.3
-- Logstash 6.4.3
-- Filebeat 6.4.3
+- Elasticsearch 6.8.13
+- lucene 7.7.3
+- Kibana 6.8.3
+- Logstash 6.8.3
+- Filebeat 6.8.3
 
 ### 準備
 ###### Elasticsearch
@@ -63,7 +64,7 @@ $ sudo systemctl start elasticsearch
 $ echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 # passord：999999
 ```
-![118efc55fc522016dd4dea44e1a52f50](imgs/9F3067AD-2F94-4CF6-9BDA-F6552AD7AFFA.png)
+![118efc55fc522016dd4dea44e1a52f50](imgs/3DD25CA6-DBF8-437F-B6E9-63A9F7F2485A.png)
 
 - 建立 Nginx 應用文件，供 Kibana 使用
 ```
@@ -111,7 +112,7 @@ i18n.locale: "zh-TW"
 ```
 
 ###### 配置 Logstash：# 配置文件以 JSON 格式編寫，於 /etc/logstash/conf.d 目錄下
-![6160e2980f87b6257d0366075364d4b6](imgs/B8706A56-E284-4E69-ACD2-E760A571E804.png)
+![6160e2980f87b6257d0366075364d4b6](imgs/9D557B7B-EDE2-4598-BFA7-369E538E27A0.png)
 - 配置 Input 內容
 ```
 $ sudo nano /etc/logstash/conf.d/02-beats-input.conf
@@ -182,7 +183,7 @@ output {
 $ sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
 # 若測試正確，則會出現 「Configuration OK」的內容
 ```
-![d0faf37f662b57d110d820f1ac246b9e](imgs/E575883C-AC72-4E14-A28C-7BBC655D78F0.png)
+![d0faf37f662b57d110d820f1ac246b9e](imgs/2E7679B4-D0D5-4569-B077-B5D88A662B5E.png)
 
 
 ###### Filebeat：配置與 Logstash 連線
@@ -200,7 +201,7 @@ $ sudo filebeat modules enable system
 # 透過指令查詢啟用和禁用的模組，查詢結果如下圖：
 $ sudo filebeat modules list
 ```
-![9474a165ea96e3ed6d18e93c37be5274](imgs/109211EE-8BF7-4116-A969-EE8083151820.png)
+![9474a165ea96e3ed6d18e93c37be5274](imgs/077C581A-1FF2-4139-AF5A-8204DC7F5CA3.png)
 - 將索引模板加載到 Elasticsearch
 ```
 # 接下來，將索引模板加載到 Elasticsearch 中。 Elasticsearch 索引是具有類似特徵的文件集合。索引用名稱標識，用於在其中執行各種操作時引用索引。創建新索引時，將自動應用索引模板。
@@ -214,26 +215,26 @@ $ sudo filebeat setup -e -E output.logstash.enabled=false -E output.elasticsearc
 
 ### 測試
 ###### Elasticsearch 連接測試 `http://gordianknot:9200`
-![2456b153e1c7bbdc2a8e091103f264aa](imgs/838FFBDE-E63F-4A53-9137-BDEEC18E7416.png)
+![2456b153e1c7bbdc2a8e091103f264aa](imgs/00C5C62B-D560-4531-B329-AF2F8185C1E6.png)
 ###### Kibana 連接測試 `http://gordianknot/status`
-![4e97f4b91e6b8cb891e8649fa9152a8b](imgs/F531A63B-5997-4519-9F88-62FA36E19480.png)
-![bed7e75d61c890c066623f3d400cee4a](imgs/E18A8C76-A95F-4465-BAFE-CD2CD174AC83.png)
+![4e97f4b91e6b8cb891e8649fa9152a8b](imgs/B21EB943-9E05-42F2-A837-AA1BA75EFECA.png)
+![bed7e75d61c890c066623f3d400cee4a](imgs/E7A580FE-4D26-4906-8532-3C85357C9860.png)
 ###### Elasticsearch 是否正確接收到資料 `http://gordianknot:9200/filebeat-*/_search?pretty`
-![cc2ae7535d9f5e6652766f43e421525f](imgs/7D35026F-E571-475F-9A57-65FA09D4C990.png)
+![cc2ae7535d9f5e6652766f43e421525f](imgs/BAB8EDE3-BDC2-4C44-BF2F-C39A8A1C928B.png)
 ###### 探索 Kibana `http://gordianknot`
 ```
 # 單擊左側導航欄中的「Discover」，選擇預定義的「filebeat- *」 索引模式以查看 Filebeat 資料。如下圖：
 ```
-![fc32d9b9bc490ce9688318c00b70fb68](imgs/DC31873A-F06D-4200-97DC-88ECE39627DE.png)
+![fc32d9b9bc490ce9688318c00b70fb68](imgs/318253E4-3602-4899-8735-5E23475DC3A4.png)
 
 ###### Kibana 配置中文化 `http://gordianknot`
-![9eeebd2a94fd1c7bd4b5b2451adc58a1](imgs/FD78BE43-AAF4-416D-9909-20137016B37C.png)
+![9eeebd2a94fd1c7bd4b5b2451adc58a1](imgs/0E8C41EA-E47A-4DC8-A0DE-673067D60FB5.png)
 
 ### 維運
 ###### Elasticsearch
 ```
 $ sudo systemctl start elasticsearch
-$ sudo systemctl enable elasticsearc
+$ sudo systemctl enable elasticsearch
 ```
 ###### Kibana
 ```
@@ -255,4 +256,5 @@ $ sudo filebeat modules list
 $ sudo systemctl start filebeat
 $ sudo systemctl enable filebeat
 ```
+
 

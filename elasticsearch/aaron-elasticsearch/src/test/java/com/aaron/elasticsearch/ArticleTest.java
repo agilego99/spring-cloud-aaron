@@ -72,6 +72,7 @@ public class ArticleTest {
     // 基於 Elasticsearc Template 用法
  	@Test
  	public void testQueryTitleCount() {
+
  		System.out.println(articleTemplate.queryTitleCount("java"));
  	}
  	

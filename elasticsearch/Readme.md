@@ -3,10 +3,11 @@
 - 解釋
 
 ## 參數
+- Ubuntu 18.04
+- Elasticsearch 6.8.13
 - Spring boot：2.0.6.RELEASE
 - Spring cloud：Finchley.SR2
 - Java：8
-- Elasticsearch 2.4.1
 - 專案
     - 
         - Main：App
@@ -220,6 +221,9 @@ public class ArticleTemplate {
 ```
 spring.application.name=aaron-elasticsearch
 server.port=8083
+
+spring.data.elasticsearch.cluster-name=docker-cluster
+spring.data.elasticsearch.cluster-nodes=gordianknot2:9300
 ```
 
 ### 測試
@@ -268,7 +272,7 @@ public class ArticleTest {
 }
 ```
 ###### 測試結果
-![0611be8c07538337eff875cde298f9b6](imgs/13CEE079-3BA5-4F48-8AD2-755D4D064900.png)
+![0611be8c07538337eff875cde298f9b6](imgs/14D6B50D-D692-435F-887C-7BC60FBBE67C.png)
 
 
 ##### ElasticsearchTemplate 示例
@@ -319,7 +323,7 @@ public class ArticleTest {
 }
 ```
 ###### 測試結果
-![421c9bcb746a286224537a32ddafa2fa](imgs/8E4AA97F-9CDE-4911-A0AE-8F63AC189E6E.png)
+![421c9bcb746a286224537a32ddafa2fa](imgs/F749947D-E78E-46CA-8730-1EFB3BA33FF7.png)
 
 
 ### 維運

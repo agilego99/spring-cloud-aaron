@@ -1,5 +1,8 @@
 package com.atguigu.principle.singleresponsibility;
 
+/**
+ * 定義：一個類應該只有一個改變的原因(馬丁.福樂)
+ */
 public class SingleResponsibility1 {
 
 	public static void main(String[] args) {
@@ -9,7 +12,6 @@ public class SingleResponsibility1 {
 		vehicle.run("汽車");
 		vehicle.run("飛機");
 	}
-
 }
 
 // 交通工具類
