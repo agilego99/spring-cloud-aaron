@@ -1,9 +1,9 @@
 package se.citerus.dddsample.interfaces.handling.ws;
 
-import com.aggregator.HandlingReport;
-import com.aggregator.HandlingReportErrors;
-import com.aggregator.HandlingReportErrors_Exception;
-import com.aggregator.HandlingReportService;
+import rdp.aggregator.HandlingReport;
+import rdp.aggregator.HandlingReportErrors;
+import rdp.aggregator.HandlingReportErrors_Exception;
+import rdp.aggregator.HandlingReportService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import se.citerus.dddsample.application.ApplicationEvents;

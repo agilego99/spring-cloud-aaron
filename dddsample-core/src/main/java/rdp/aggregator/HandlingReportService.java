@@ -1,5 +1,5 @@
 
-package com.aggregator;
+package rdp.aggregator;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

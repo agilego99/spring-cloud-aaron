@@ -1,11 +1,11 @@
-package com.cht.rdp.elasticsearch.repository;
+package rdp.cht.rdp.elasticsearch.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cht.rdp.elasticsearch.po.Article;
+import rdp.cht.rdp.elasticsearch.po.Article;
 
 /**
  * extends CrudRepository 基礎功能

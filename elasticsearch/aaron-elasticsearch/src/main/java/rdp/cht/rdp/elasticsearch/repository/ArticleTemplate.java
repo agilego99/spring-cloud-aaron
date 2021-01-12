@@ -1,4 +1,4 @@
-package com.cht.rdp.elasticsearch.repository;
+package rdp.cht.rdp.elasticsearch.repository;
 import java.util.ArrayList;
 import java.util.List;
 import org.elasticsearch.action.search.SearchResponse;
@@ -13,7 +13,7 @@ import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Repository;
-import com.cht.rdp.elasticsearch.po.Article;
+import rdp.cht.rdp.elasticsearch.po.Article;
 @Repository
 public class ArticleTemplate {
  	

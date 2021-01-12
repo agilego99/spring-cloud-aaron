@@ -1,4 +1,4 @@
-package com.pathfinder.api;
+package rdp.pathfinder.api;
 
 import java.io.Serializable;
 import java.util.Date;

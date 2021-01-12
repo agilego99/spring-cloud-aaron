@@ -1,4 +1,4 @@
-package com.cht.rdp.elasticsearch.po;
+package rdp.cht.rdp.elasticsearch.po;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

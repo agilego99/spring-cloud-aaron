@@ -1,5 +1,5 @@
 
-package com.aggregator;
+package rdp.aggregator;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;

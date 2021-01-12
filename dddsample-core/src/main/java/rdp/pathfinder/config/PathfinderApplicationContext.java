@@ -1,9 +1,9 @@
-package com.pathfinder.config;
+package rdp.pathfinder.config;
 
-import com.pathfinder.api.GraphTraversalService;
-import com.pathfinder.internal.GraphDAO;
-import com.pathfinder.internal.GraphDAOStub;
-import com.pathfinder.internal.GraphTraversalServiceImpl;
+import rdp.pathfinder.api.GraphTraversalService;
+import rdp.pathfinder.internal.GraphDAO;
+import rdp.pathfinder.internal.GraphDAOStub;
+import rdp.pathfinder.internal.GraphTraversalServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

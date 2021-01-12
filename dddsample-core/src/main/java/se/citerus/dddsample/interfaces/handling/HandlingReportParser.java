@@ -1,6 +1,6 @@
 package se.citerus.dddsample.interfaces.handling;
 
-import com.aggregator.HandlingReport;
+import rdp.aggregator.HandlingReport;
 import org.apache.commons.lang.StringUtils;
 import se.citerus.dddsample.domain.model.cargo.TrackingId;
 import se.citerus.dddsample.domain.model.handling.HandlingEvent;

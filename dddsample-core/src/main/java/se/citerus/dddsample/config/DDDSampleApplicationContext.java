@@ -1,6 +1,6 @@
 package se.citerus.dddsample.config;
 
-import com.pathfinder.api.GraphTraversalService;
+import rdp.pathfinder.api.GraphTraversalService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

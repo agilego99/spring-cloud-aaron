@@ -1,4 +1,4 @@
-package com.pathfinder.internal;
+package rdp.pathfinder.internal;
 
 import java.util.ArrayList;
 import java.util.Arrays;

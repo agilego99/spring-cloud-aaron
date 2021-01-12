@@ -1,5 +1,5 @@
 
-package com.aggregator;
+package rdp.aggregator;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

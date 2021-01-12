@@ -1,8 +1,8 @@
-package com.pathfinder.internal;
+package rdp.pathfinder.internal;
 
-import com.pathfinder.api.GraphTraversalService;
-import com.pathfinder.api.TransitEdge;
-import com.pathfinder.api.TransitPath;
+import rdp.pathfinder.api.GraphTraversalService;
+import rdp.pathfinder.api.TransitEdge;
+import rdp.pathfinder.api.TransitPath;
 
 import java.util.*;
 

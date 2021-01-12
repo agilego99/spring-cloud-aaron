@@ -1,8 +1,8 @@
 package se.citerus.dddsample.infrastructure.routing;
 
-import com.pathfinder.api.GraphTraversalService;
-import com.pathfinder.internal.GraphDAOStub;
-import com.pathfinder.internal.GraphTraversalServiceImpl;
+import rdp.pathfinder.api.GraphTraversalService;
+import rdp.pathfinder.internal.GraphDAOStub;
+import rdp.pathfinder.internal.GraphTraversalServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import se.citerus.dddsample.domain.model.cargo.*;
