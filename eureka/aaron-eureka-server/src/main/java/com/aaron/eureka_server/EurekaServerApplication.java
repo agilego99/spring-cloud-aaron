@@ -11,13 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * Eureka 服務端範例
- * 
  * @author aaron
- * 
- * @about 
- * 
- * @date 
- * 
+ * @about
+ * @date
  */
 @EnableEurekaServer
 @SpringBootApplication
@@ -32,9 +28,9 @@ public class EurekaServerApplication {
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
-	    	//關閉 csrf
+	    	//Close csrf
 	        http.csrf().disable();
-	        //支持 httpBasic
+	        //Support httpBasic
 	        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
 	    }
 	}

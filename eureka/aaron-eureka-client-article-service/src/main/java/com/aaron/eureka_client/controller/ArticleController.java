@@ -29,7 +29,7 @@ public class ArticleController {
 	@GetMapping("/article/callHello") 	
 	public String callHello() { 		
 	    return restTemplate.getForObject(
-			"http://localhost:8083/user/hello", String.class); 	
+			"http://localhost:8083/user/hello", StdoHealthChecking.class);
 	}
 	
 	@GetMapping("/article/callHello2") 	
